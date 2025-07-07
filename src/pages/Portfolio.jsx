@@ -361,7 +361,7 @@ export default function Portfolio() {
           className="relative z-10 text-center max-w-4xl px-4"
         >
           <h1
-            className={`text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] via-[#00D9F5] to-purple-400 ${
+            className={`text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] via-[#00D9F5] to-violet-400 ${
               !isDarkMode ? 'drop-shadow-lg' : ''
             }`}
           >
@@ -410,7 +410,7 @@ export default function Portfolio() {
     className={`
       text-4xl font-bold mb-12 text-center
       text-transparent bg-clip-text
-      bg-gradient-to-r from-emerald-400 to-teal-300
+      bg-gradient-to-r from-teal-200 to-emerald-500 
       ${!isDarkMode ? 'drop-shadow-lg' : 'drop-shadow-xl'}
     `}
   >
@@ -541,15 +541,16 @@ export default function Portfolio() {
 >
   {/* Section Heading */}
   <h2
-    className={`
-      text-4xl font-bold mb-12 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-blue-400 to-purple-500
-      ${!isDarkMode ? 'drop-shadow-lg' : ''}
-    `}
-  >
-    Education
-  </h2>
+  className={`
+    text-4xl font-bold mb-12 text-center
+    text-transparent bg-clip-text
+    bg-gradient-to-r from-blue-400 to-purple-500
+    ${!isDarkMode ? 'drop-shadow-lg' : ''}
+  `}
+>
+  Education
+</h2>
+
 
   <div className="max-w-4xl mx-auto space-y-8">
     {education.map((edu, i) => (
@@ -772,7 +773,7 @@ export default function Portfolio() {
         fill="currentColor"
         viewBox="0 0 24 24"
       >
-        <path d="M2 4a2 2 0 0 1 2-2h16a2 ...Z" />
+        
       </svg>
       <h3 className="text-xl font-semibold mb-2">Email Me</h3>
       <p className={`mb-4 ${themeClasses.textSecondary}`}>gowthamsabari24499@gmail.com</p>
@@ -805,7 +806,7 @@ export default function Portfolio() {
         fill="currentColor"
         viewBox="0 0 24 24"
       >
-        <path d="M6.62 10.79a15.05 ...Z" />
+        
       </svg>
       <h3 className="text-xl font-semibold mb-2">Call Me</h3>
       <p className={`mb-4 ${themeClasses.textSecondary}`}>+61 451 317 244</p>
