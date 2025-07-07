@@ -1,11 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'   // ← add this
+import tailwindcss from '@tailwindcss/vite'
 
-// https://vite.dev/config/
 export default defineConfig({
+  // ensure all your built assets are served under /Gowthamportfolio/
+  base: '/Gowthamportfolio/',
   plugins: [
     react(),
-    tailwindcss(),                          // ← and this
+    tailwindcss(),
   ],
 })
