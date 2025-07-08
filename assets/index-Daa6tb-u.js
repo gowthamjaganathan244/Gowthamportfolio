@@ -105,22 +105,22 @@ Error generating stack: `+n.message+`
               transition-all duration-300
               group-hover:text-transparent group-hover:bg-clip-text
               group-hover:bg-gradient-to-r from-teal-400 to-blue-500
-            `,children:w.company}),H.jsx("span",{className:`${E.textSecondary} text-sm`,children:w.period})]}),H.jsx("p",{className:`text-lg mb-4 italic ${E.textSecondary}`,children:w.role}),H.jsx("ul",{className:`list-disc list-inside space-y-1 mb-4 ${E.textMuted}`,children:w.highlights.map((j,G)=>H.jsx("li",{children:j},G))}),H.jsx("div",{className:"flex flex-wrap gap-2",children:w.technologies.map((j,G)=>H.jsx("span",{className:"px-3 py-1 rounded-full text-xs",children:j},G))})]},_))})]}),H.jsxs(Kt.section,{ref:c.education,initial:S.hidden,whileInView:S.visible,className:`py-24 px-4 ${E.bg} snap-start`,children:[H.jsx("h2",{className:`
-    text-4xl font-bold mb-12 text-center
-    text-transparent bg-clip-text
-    bg-gradient-to-r from-blue-400 to-purple-500
-    ${u?"":"drop-shadow-lg"}
-  `,children:"Education"}),H.jsx("div",{className:"max-w-4xl mx-auto space-y-8",children:FA.map((w,_)=>H.jsxs(Kt.div,{initial:A.hidden,whileInView:A.visible,whileHover:{scale:1.02},className:`
-          group relative rounded-2xl p-6 border
+            `,children:w.company}),H.jsx("span",{className:`${E.textSecondary} text-sm`,children:w.period})]}),H.jsx("p",{className:`text-lg mb-4 italic ${E.textSecondary}`,children:w.role}),H.jsx("ul",{className:`list-disc list-inside space-y-1 mb-4 ${E.textMuted}`,children:w.highlights.map((j,G)=>H.jsx("li",{children:j},G))}),H.jsx("div",{className:"flex flex-wrap gap-2",children:w.technologies.map((j,G)=>H.jsx("span",{className:"px-3 py-1 rounded-full text-xs",children:j},G))})]},_))})]}),H.jsxs(Kt.section,{ref:c.education,initial:S.hidden,whileInView:S.visible,className:`py-12 md:py-24 px-4 ${E.bg} snap-start`,children:[H.jsx("h2",{className:`
+      text-3xl md:text-4xl font-bold mb-10 md:mb-12 text-center
+      text-transparent bg-clip-text
+      bg-gradient-to-r from-blue-400 to-purple-500
+      ${u?"":"drop-shadow-lg"}
+    `,children:"Education"}),H.jsx("div",{className:"max-w-4xl mx-auto space-y-6 sm:space-y-8",children:FA.map((w,_)=>H.jsxs(Kt.div,{initial:A.hidden,whileInView:A.visible,whileHover:{scale:1.02},transition:{type:"spring",stiffness:120,damping:20},className:`
+          group relative rounded-2xl p-4 sm:p-6 border
           ${E.cardBorder} ${E.cardBg}
           transition-all duration-300
           hover:border-2 hover:border-purple-500 hover:shadow-lg
-        `,children:[H.jsx("div",{className:"absolute top-4 right-4 text-xs font-medium text-purple-500",children:w.period}),H.jsx("h3",{className:`
-            text-2xl font-semibold mb-2
+        `,children:[H.jsx("div",{className:"absolute top-2 right-2 sm:top-4 sm:right-4 text-xs font-medium text-purple-500",children:w.period}),H.jsx("h3",{className:`
+            text-xl sm:text-2xl font-semibold mb-2
             transition-all duration-300
             group-hover:text-transparent group-hover:bg-clip-text
             group-hover:bg-gradient-to-r from-blue-400 to-purple-500
-          `,children:w.institution}),H.jsx("p",{className:`italic mb-4 ${E.textSecondary}`,children:w.degree})]},_))})]}),H.jsxs(Kt.section,{ref:c.certifications,initial:S.hidden,whileInView:S.visible,className:`py-24 px-4 ${E.bg} snap-start`,children:[H.jsx("h2",{className:`
+          `,children:w.institution}),H.jsx("p",{className:`italic ${E.textSecondary}`,children:w.degree})]},_))})]}),H.jsxs(Kt.section,{ref:c.certifications,initial:S.hidden,whileInView:S.visible,className:`py-24 px-4 ${E.bg} snap-start`,children:[H.jsx("h2",{className:`
       text-4xl font-bold mb-12 text-center
       text-transparent bg-clip-text
       bg-gradient-to-r from-purple-400 to-pink-400
