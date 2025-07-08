@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Logo from '../assets/GJ.png'
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X,} from 'lucide-react';
+
 
 // Professional Experience Data
 const experiences = [
@@ -269,7 +270,7 @@ const education = [
   {
     institution: 'Anna University, India',
     degree: 'Bachelor of Engineering - Computer Science',  // matches résumé
-    period: 'Aug 2016 – Sep 2020'
+    period: 'Aug 2016 – Nov 2020'
   }
 ];
 
@@ -444,6 +445,7 @@ export default function Portfolio() {
           animate={fadeUp.visible}
           className="relative z-10 text-center max-w-4xl px-4"
         >
+          
           <h1
             className={`text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] via-[#00D9F5] to-violet-400 ${
               !isDarkMode ? 'drop-shadow-lg' : ''
@@ -452,19 +454,20 @@ export default function Portfolio() {
             Gowtham Jaganathan
           </h1>
           <p className={`text-2xl md:text-3xl mb-8 ${themeClasses.textSecondary}`}>
-            Software Engineer
+            Software Engineer | Full-Stack Developer & Workflow Automation Specialist
           </p>
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5, duration: 0.6 }}
-            className={`max-w-3xl mx-auto mb-8 ${themeClasses.textMuted} text-lg leading-relaxed`}
-          >
-            <p>
-             As a Software Engineer with a Master of IT & Systems and a Bachelor in Computer Science, I’ve architected a React-based hot-desk booking platform for Bluebird Advisory, automated end-to-end survey workflows at Canberra Cyber Hub, developed Python/Flask APIs to enable smooth migrations at eShipz, and designed responsive Bootstrap sites at Gewissen Digital. I’m passionate about UX-driven design, cloud automation and IoT, and I quickly ramp up new frameworks and tools—combining analytical problem-solving with a collaborative mindset to deliver polished, maintainable solutions.
-            </p>
-          </motion.div>
-          <div className="flex justify-center space-x-6">
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5, duration: 0.6 }}
+  className={`max-w-3xl mx-auto mb-8 text-center ${themeClasses.textMuted} text-lg leading-relaxed`}
+>
+  <p className="text-justify">
+    As a Software Engineer with a Master of IT & Systems and a Bachelor in Computer Science, I’ve architected a React-based hot-desk booking platform for Bluebird Advisory, automated end-to-end survey workflows at Canberra Cyber Hub, developed Python/Flask APIs to enable smooth migrations at eShipz, and designed responsive Bootstrap sites at Gewissen Digital. I’m passionate about UX-driven design, cloud automation and IoT, and I quickly ramp up new frameworks and tools—combining analytical problem-solving with a collaborative mindset to deliver polished, maintainable solutions.
+  </p>
+</motion.div>
+
+          {/* <div className="flex justify-center space-x-6">
             {['LinkedIn', 'GitHub', 'Contact'].map((name) => (
               <motion.a
                 key={name}
@@ -479,7 +482,7 @@ export default function Portfolio() {
                 {name}
               </motion.a>
             ))}
-          </div>
+          </div> */}
         </motion.div>
       </motion.section>
 
