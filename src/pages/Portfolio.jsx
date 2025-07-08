@@ -1,65 +1,138 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import Logo from '../assets/GJ.png'
 import { Menu, X, Sun, Moon } from 'lucide-react';
 
 // Professional Experience Data
 const experiences = [
   {
     company: 'University of Canberra',
-    role: 'Capstone Project - Bluebird Advisory',
-    period: 'Feb 2025 - May 2025',
-    highlights: [
-      'Built a desk-booking app in React with interactive floor map and date picker',
-      'Automated booking emails and check-in/out tracking using Power Automate',
-      'Set up Azure AD single-sign-on and packaged automation flows for easy deployment'
-    ],
-    technologies: ['React', 'Power Automate', 'Azure AD', 'Microsoft Lists']
+role: 'Capstone Project - Bluebird Advisory',
+period: 'Feb 2025 - May 2025',
+highlights: [
+  'Built a Microsoft-integrated desk booking app in React with interactive floor map and calendar-based date picker',
+  'Implemented Azure AD single sign-on and embedded the system into Microsoft Teams for seamless access',
+  'Automated calendar invites, booking confirmations, and check-in/out tracking using Power Automate and Outlook',
+  'Enabled recurring bookings with editable days and generated usage reports with desk and attendance analytics',
+  'Collaborated through weekly stakeholder meetings and managed agile development using Jira and GitHub'
+],
+technologies: [
+  'React', 'Vite', 'Tailwind CSS', 'Power Automate', 'Azure AD', 'Microsoft Teams',
+  'Outlook Calendar API', 'Microsoft Graph API', 'Microsoft Lists', 'SharePoint Lists', 'GitHub', 'Jira'
+]
+
   },
   {
-    company: 'Canberra Cyber Hub @ Innovation Central Canberra',
-    role: 'Student Intern',
-    period: 'Dec 2024 - Feb 2025',
-    highlights: [
-      'Developed automated survey solutions using Microsoft Forms, Power Automate, and HubSpot CRM',
-      'Created a structured business directory in Drupal, enhancing data management and usability',
-      'Participated in weekly meetings with stakeholders to report progress and adjust workflows'
-    ],
-    technologies: ['Microsoft Forms', 'Power Automate', 'HubSpot', 'Drupal']
+    "company": "Canberra Cyber Hub @ Innovation Central Canberra",
+  "role": "Student Intern",
+  "period": "Dec 2024 – Feb 2025",
+  "highlights": [
+    "Created and launched a capability mapping survey using Microsoft Forms and HubSpot to streamline cyber business data collection",
+    "Explored integration of Microsoft Forms with HubSpot CRM using Power Automate and documented system limitations and alternatives",
+    "Built a business directory in Drupal with taxonomy, filters, and webforms to support structured data submission and user navigation",
+    "Collaborated with stakeholders through weekly meetings using Microsoft Teams and Outlook to provide updates and resolve technical issues",
+    "Prepared and delivered a detailed closure report and final presentation using Microsoft Word and PowerPoint"
+  ],
+  "technologies": [
+    "Microsoft Forms",
+    "Power Automate",
+    "HubSpot CRM",
+    "Drupal CMS",
+    "Microsoft Teams",
+    "Microsoft Outlook",
+    "Microsoft Word",
+    "Microsoft PowerPoint",
+    "Webforms module",
+    "HTML/CSS",
+    "Technical documentation tools"]
   },
   {
     company: 'eShipz',
-    role: 'Software Engineer Intern',
-    period: 'Dec 2020 - Dec 2021',
-    highlights: [
-      'Worked on backend services using Python and Flask, and tested APIs during system migrations',
-      'Fixed bugs and added features in agile sprints to boost performance'
-    ],
-    technologies: ['Python', 'Flask', 'APIs', 'Agile']
+  role: 'Software Engineer Intern',
+  period: 'Dec 2020 - Dec 2021',
+  highlights: [
+    'Led migration of core services from Python 2 to Python 3, refactoring both Flask and Pyramid applications for full compatibility and stability',
+    'Built shipment-tracking and e-commerce integration tools, designing RESTful APIs and lightweight HTML/CSS interfaces',
+    'Executed load and stress tests with Locust to pinpoint performance bottlenecks and improve API response times',
+    'Collaborated in Agile sprints to troubleshoot production issues, implement new features and optimize backend performance'
+  ],
+  technologies: [
+    'Python 2→3',
+    'Flask',
+    'Pyramid',
+    'RESTful APIs',
+    'HTML',
+    'CSS',
+    'Locust',
+    'Git',
+    'Agile'
+  ]
   },
   {
     company: 'Gewissen Digital Services',
-    role: 'Frontend Developer Intern',
-    period: 'Feb 2020 - Nov 2020',
-    highlights: [
-      'Developed responsive websites with HTML, CSS, and Bootstrap for mobile and cross-browser support',
-      'Collaborated on UI updates to improve user experience and site performance'
-    ],
-    technologies: ['HTML', 'CSS', 'Bootstrap', 'JavaScript']
+  role: 'Frontend Developer Intern',
+  period: 'Feb 2020 - Nov 2020',
+  highlights: [
+    'Developed and maintained multiple responsive websites using HTML5, CSS3 and Bootstrap, ensuring mobile-first design and cross-browser compatibility',
+    'Collaborated with designers to translate wireframes into interactive UI components, enhancing user experience and improving page load performance',
+    'Optimized site performance by minifying assets and implementing lazy-loading techniques',
+    'Participated in project planning and code reviews, leveraging Git for version control'
+  ],
+  technologies: [
+    'HTML5',
+    'CSS3',
+    'Bootstrap',
+    'JavaScript',
+    'Git',
+    'Cross-browser Testing'
+  ]
   },
   {
     company: 'MobiPhoenix Systems',
-    role: 'iOS Developer Intern',
-    period: 'Dec 2018 - Feb 2019',
-    highlights: [
-      'Built a Swift/Xcode newsreader app that consumed public APIs',
-      'Followed Apple design guidelines to create clean, intuitive interfaces'
-    ],
-    technologies: ['Swift', 'Xcode', 'iOS', 'APIs']
+  role: 'iOS Developer Intern',
+  period: 'Dec 2018 - Feb 2019',
+  highlights: [
+    'Designed and developed a Swift-based newsreader app in Xcode using MVC architecture and UIKit components',
+    'Integrated RESTful APIs to fetch, parse and cache JSON feeds for seamless online/offline reading',
+    'Applied Apple’s Human Interface Guidelines and Auto Layout to build adaptive, intuitive interfaces across multiple iPhone models',
+    'Performed device testing on various iOS versions and screen sizes, debugging issues and optimizing app performance'
+  ],
+  technologies: [
+    'Swift',
+    'Xcode',
+    'UIKit',
+    'Auto Layout',
+    'RESTful APIs',
+    'JSON',
+    'Git',
+    'MVC Architecture',
+    'iOS Testing'
+  ]
   }
 ];
 
 // Projects Showcase Data
 const projects = [
+  {
+  title: 'Personal Portfolio Website',
+  description:
+    'Single-page React site showcasing my projects and skills, with smooth Framer-Motion animations and responsive dark/light themes.',
+  features: [
+    'Dynamic routing with React Router',
+    'Framer-Motion page transitions',
+    'Theme toggle (dark / light) via Tailwind CSS variables',
+    'Scroll-snap navigation & active-section highlighting',
+    'Content powered by a central JSON data module',
+    'Auto-animate sections on viewport reveal',
+    'Deployed on GitHub Pages with a custom domain'
+  ],
+  technologies: [
+    'React', 'TypeScript', 'Vite', 'Tailwind CSS',
+    'Framer Motion', 'Lucide-react', 'React Router', 'GitHub Pages'
+  ]
+  
+},
+
   {
     title: 'Bluebird Smart Desk Booking System',
     description: 'React-based desk-booking app with interactive floor maps, multi-date picker, real-time availability, check-in/out tracking, analytics, and automated emails',
@@ -87,6 +160,18 @@ const projects = [
     technologies: ['Microsoft Forms', 'Power Automate', 'HubSpot CRM', 'Drupal']
   },
   {
+  title: 'European Landscape Explorer',
+  description: 'A fast-loading, responsive website that celebrates Europe’s mountain, coast, and city vistas through responsive image grids and interactive travel itineraries.',
+  features: [
+    'Responsive CSS Grid gallery',
+    'Progressive JPEGs for quick first paint',
+    'Fullscreen lightbox with swipe navigation',
+    'Google Maps route builder for each region',
+    'Service-worker caching for offline viewing'
+  ],
+  technologies: ['HTML', 'CSS', 'JavaScript', 'Google Maps API', 'Service Workers']
+},
+  {
     title: 'IoT Home Automation with Energy Tracking',
     description: 'Voice-controlled home automation system using ESP8266 NodeMCU, IFTTT, MQTT, and INA219 sensors',
     features: [
@@ -109,7 +194,7 @@ const projects = [
     technologies: ['ESP8266 NodeMCU', 'Accelerometer', 'GPS', 'GSM']
   },
   {
-    title: 'Simple Car Parking Management System',
+    title: 'Car Parking Management System',
     description: 'Web app that helps users find available parking spaces by location',
     features: [
       'Location-based parking search',
@@ -179,24 +264,15 @@ const education = [
   {
     institution: 'University of Canberra, Australia',
     degree: 'Master of Information Technology & Systems',
-    period: 'Jul 2023 – May 2025',
-    notes: [
-      'Dean\'s Excellence Award 2025 (GPA 6.5+)',
-      'Dean\'s Excellence Award 2024 (GPA 6.5+)',
-      'Focus on cloud computing and workflow automation'
-    ]
+    period: 'Jul 2023 – May 2025'
   },
   {
     institution: 'Anna University, India',
-    degree: 'Bachelor of Engineering - Computer Science',
-    period: 'Aug 2016 – Sep 2020',
-    notes: [
-      'Graduated with distinction',
-      'Focus on IoT and embedded systems',
-      'Final year project: Simple Car Parking Management System'
-    ]
+    degree: 'Bachelor of Engineering - Computer Science',  // matches résumé
+    period: 'Aug 2016 – Sep 2020'
   }
 ];
+
 
 const certifications = [
   'The Academic Integrity Module (AIM) - University of Canberra',
@@ -276,53 +352,61 @@ export default function Portfolio() {
     <div className={`${themeClasses.bg} ${themeClasses.text} font-sans min-h-screen overflow-x-hidden transition-colors duration-300`}>
       {/* Navigation */}
       <motion.nav
-        initial="hidden"
-        animate="visible"
-        variants={fadeIn}
-        className={`fixed top-0 w-full ${themeClasses.navBg} backdrop-blur-md z-50 transition-colors duration-300`}
-      >
-        <div className="max-w-8xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
-          {/* Theme Toggle */}
-          <motion.button
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            onClick={toggleTheme}
-            className={`p-2 rounded-full ${isDarkMode ? 'bg-white/10 text-yellow-400' : 'bg-gray-100 text-gray-600'} transition-colors duration-300`}
-          >
-            {isDarkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </motion.button>
+  initial="hidden"
+  animate="visible"
+  variants={fadeIn}
+  className={`fixed top-0 w-full ${themeClasses.navBg} backdrop-blur-md z-50 transition-colors duration-300`}
+>
+  <div className="max-w-8xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
 
-          {/* Mobile Hamburger */}
-          <button
-            className={`md:hidden ${isDarkMode ? 'text-gray-200' : 'text-gray-600'}`}
-            onClick={() => setMenuOpen(o => !o)}
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+    {/* ─── Logo + Theme Toggle ─── */}
+    <div className="flex items-center space-x-4">
+      {/* Logo: clicking it toggles the theme */}
+      <img
+        src={Logo}
+        alt="Site logo"
+        className="h-8 w-auto cursor-pointer transition-transform hover:scale-105"
+        onClick={toggleTheme}
+      />
+      
+    </div>
 
-          {/* Desktop Navigation Links */}
-<div className="hidden md:flex space-x-6">
-  {Object.keys(sectionRefs).map(key => {
-    const isActive = activeSection === key;
-    const base = 'relative text-sm normal-case tracking-wider py-1 transition-all';
-    const activeClass = isActive ? sectionGradients[key] : themeClasses.textMuted;
-    return (
+    {/* ─── Mobile Hamburger + Desktop Links ─── */}
+    <div className="flex items-center">
+      {/* Mobile Hamburger */}
       <button
-        key={key}
-        onClick={() => scrollToSection(key)}
-        className={`${base} ${isActive ? activeClass : `${themeClasses.textMuted} hover:${themeClasses.text.split(' ')[0]}`}`}
+        className={`md:hidden ${isDarkMode ? 'text-gray-200' : 'text-gray-600'}`}
+        onClick={() => setMenuOpen(o => !o)}
       >
-        {key.charAt(0).toUpperCase() + key.slice(1)}
-        {isActive && (
-          <span className="absolute bottom-0 left-1/2 w-4 h-[2px] bg-blue-500 -translate-x-1/2"></span>
-        )}
+        {menuOpen ? <X size={24} /> : <Menu size={24} />}
       </button>
-    );
-  })}
-</div>
 
-        </div>
-
+      {/* Desktop Navigation Links */}
+      <div className="hidden md:flex space-x-6">
+        {Object.keys(sectionRefs).map(key => {
+          const isActive = activeSection === key;
+          const base = 'relative text-sm normal-case tracking-wider py-1 transition-all';
+          const activeClass = isActive ? sectionGradients[key] : themeClasses.textMuted;
+          return (
+            <button
+              key={key}
+              onClick={() => scrollToSection(key)}
+              className={`${base} ${
+                isActive 
+                  ? activeClass 
+                  : `${themeClasses.textMuted} hover:${themeClasses.text.split(' ')[0]}`
+              }`}
+            >
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+              {isActive && (
+                <span className="absolute bottom-0 left-1/2 w-4 h-[2px] bg-blue-500 -translate-x-1/2"></span>
+              )}
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  </div>
         {/* Mobile Dropdown */}
         {menuOpen && (
   <div className={`md:hidden ${themeClasses.navBg} backdrop-blur-lg transition-colors duration-300`}>
@@ -588,12 +672,7 @@ export default function Portfolio() {
           {edu.degree}
         </p>
 
-        {/* Notes */}
-        <ul className={`list-disc list-inside space-y-1 ${themeClasses.textMuted}`}>
-          {edu.notes.map((note, idx) => (
-            <li key={idx}>{note}</li>
-          ))}
-        </ul>
+        
       </motion.div>
     ))}
   </div>
@@ -713,7 +792,7 @@ export default function Portfolio() {
 
         {/* Key Features */}
         <ul className={`list-disc list-inside mb-4 space-y-1 ${themeClasses.textMuted}`}>
-          {proj.features.slice(0, 4).map((feat, idx) => (
+          {proj.features.slice(0, 8).map((feat, idx) => (
             <li key={idx}>{feat}</li>
           ))}
         </ul>
@@ -755,76 +834,40 @@ export default function Portfolio() {
     Let’s Connect
   </h2>
   <p className={`text-lg text-center mb-12 ${themeClasses.textSecondary}`}>
-    I’m open to new opportunities and collaborations. Feel free to reach out via email or phone.
+    I’m always keen to chat about new projects and opportunities. Find me on&nbsp;
+    <span className="font-semibold">LinkedIn</span>.
   </p>
 
-  <div className="max-w-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-    {/* Email Card */}
-    <motion.div
-      whileHover={{ scale: 1.03 }}
+  {/* LinkedIn Card */}
+  <motion.div
+    whileHover={{ scale: 1.03 }}
+    className={`
+      max-w-md mx-auto flex flex-col items-center p-6 rounded-2xl
+      border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+      transition-shadow duration-300 hover:shadow-2xl
+    `}
+  >
+  
+    <h3 className="text-xl font-semibold mb-2">LinkedIn</h3>
+    <p className={`mb-4 ${themeClasses.textSecondary}`}>
+      /in/gowtham-jaganathan-0b5354280
+    </p>
+    <motion.a
+      href="https://www.linkedin.com/in/gowtham-jaganathan-0b5354280/"
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.05 }}
       className={`
-        flex flex-col items-center p-6 rounded-2xl 
-        border ${themeClasses.cardBorder} ${themeClasses.cardBg}
-        transition-shadow duration-300 hover:shadow-2xl
+        inline-block px-6 py-2 rounded-full
+        bg-gradient-to-r from-red-500 to-orange-400
+        text-white font-medium
+        transition-all duration-300
+        hover:opacity-90
       `}
     >
-      <svg
-        className="w-10 h-10 mb-4 text-red-500"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        
-      </svg>
-      <h3 className="text-xl font-semibold mb-2">Email Me</h3>
-      <p className={`mb-4 ${themeClasses.textSecondary}`}>gowthamsabari24499@gmail.com</p>
-      <motion.a
-        href="mailto:gowthamsabari24499@gmail.com"
-        whileHover={{ scale: 1.05 }}
-        className={`
-          inline-block px-6 py-2 rounded-full
-          bg-gradient-to-r from-red-500 to-orange-400
-          text-white font-medium
-          transition-all duration-300
-          hover:opacity-90
-        `}
-      >
-        Send Email
-      </motion.a>
-    </motion.div>
-
-    {/* Phone Card */}
-    <motion.div
-      whileHover={{ scale: 1.03 }}
-      className={`
-        flex flex-col items-center p-6 rounded-2xl 
-        border ${themeClasses.cardBorder} ${themeClasses.cardBg}
-        transition-shadow duration-300 hover:shadow-2xl
-      `}
-    >
-      <svg
-        className="w-10 h-10 mb-4 text-red-500"
-        fill="currentColor"
-        viewBox="0 0 24 24"
-      >
-        
-      </svg>
-      <h3 className="text-xl font-semibold mb-2">Call Me</h3>
-      <p className={`mb-4 ${themeClasses.textSecondary}`}>+61 451 317 244</p>
-      <motion.a
-        href="tel:+61451317244"
-        whileHover={{ scale: 1.05 }}
-        className={`
-          inline-block px-6 py-2 rounded-full
-          bg-gradient-to-r from-red-500 to-orange-400
-          text-white font-medium
-          transition-all duration-300
-          hover:opacity-90
-        `}
-      >
-        Call Now
-      </motion.a>
-    </motion.div>
-  </div>
+      Visit Profile
+    </motion.a>
+  </motion.div>
 </motion.section>
 
 
