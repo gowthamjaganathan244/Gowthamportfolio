@@ -282,7 +282,8 @@ const certifications = [
   'Fundamentals of Red Hat Enterprise Linux - RedHat (Coursera)',
   'Internet of Things - IIT – NPTEL',
   'Introduction to Generative AI - Google Cloud (Coursera)',
-  'Automation Testing (Selenium) - Greens Technology, Chennai'
+  'Automation Testing (Selenium) - Greens Technology, Chennai',
+  'Introduction to Docker - Google Cloud (Coursera)'
 ];
 
 const sectionGradients = {
@@ -624,44 +625,44 @@ export default function Portfolio() {
   ref={sectionRefs.education}
   initial={fadeIn.hidden}
   whileInView={fadeIn.visible}
-  className={`py-24 px-4 ${themeClasses.bg} snap-start`}
+  className={`py-12 md:py-24 px-4 ${themeClasses.bg} snap-start`}
 >
-  {/* Section Heading */}
+  {/* Heading */}
   <h2
-  className={`
-    text-4xl font-bold mb-12 text-center
-    text-transparent bg-clip-text
-    bg-gradient-to-r from-blue-400 to-purple-500
-    ${!isDarkMode ? 'drop-shadow-lg' : ''}
-  `}
->
-  Education
-</h2>
+    className={`
+      text-3xl md:text-4xl font-bold mb-10 md:mb-12 text-center
+      text-transparent bg-clip-text
+      bg-gradient-to-r from-blue-400 to-purple-500
+      ${!isDarkMode ? 'drop-shadow-lg' : ''}
+    `}
+  >
+    Education
+  </h2>
 
-
-  <div className="max-w-4xl mx-auto space-y-8">
+  <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
     {education.map((edu, i) => (
       <motion.div
         key={i}
         initial={fadeUp.hidden}
         whileInView={fadeUp.visible}
         whileHover={{ scale: 1.02 }}
+        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
         className={`
-          group relative rounded-2xl p-6 border
+          group relative rounded-2xl p-4 sm:p-6 border
           ${themeClasses.cardBorder} ${themeClasses.cardBg}
           transition-all duration-300
           hover:border-2 hover:border-purple-500 hover:shadow-lg
         `}
       >
-        {/* Date label (underline removed) */}
-        <div className="absolute top-4 right-4 text-xs font-medium text-purple-500">
+        {/* Period badge */}
+        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 text-xs font-medium text-purple-500">
           {edu.period}
         </div>
 
-        {/* Institution */}
+        {/* Institution name */}
         <h3
           className={`
-            text-2xl font-semibold mb-2
+            text-xl sm:text-2xl font-semibold mb-2
             transition-all duration-300
             group-hover:text-transparent group-hover:bg-clip-text
             group-hover:bg-gradient-to-r from-blue-400 to-purple-500
@@ -671,16 +672,13 @@ export default function Portfolio() {
         </h3>
 
         {/* Degree */}
-        <p className={`italic mb-4 ${themeClasses.textSecondary}`}>
+        <p className={`italic ${themeClasses.textSecondary}`}>
           {edu.degree}
         </p>
-
-        
       </motion.div>
     ))}
   </div>
 </motion.section>
-
 
 
 
