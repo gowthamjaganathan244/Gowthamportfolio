@@ -283,7 +283,9 @@ const certifications = [
   'Internet of Things - IIT – NPTEL',
   'Introduction to Generative AI - Google Cloud (Coursera)',
   'Automation Testing (Selenium) - Greens Technology, Chennai',
-  'Introduction to Docker - Google Cloud (Coursera)'
+  'Introduction to Docker - Google Cloud (Coursera)',
+  'Foundations of Red Hat Cloud-native Development - RedHat (Coursera)',
+  'Fundamentals of Ansible - RedHat (Coursera)'
 ];
 
 const sectionGradients = {
