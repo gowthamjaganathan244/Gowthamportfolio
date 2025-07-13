@@ -460,15 +460,63 @@ export default function Portfolio() {
             Software Engineer | Full-Stack Developer & Workflow Automation Specialist
           </p>
           <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ delay: 0.5, duration: 0.6 }}
-  className={`max-w-3xl mx-auto mb-8 text-center ${themeClasses.textMuted} text-lg leading-relaxed`}
->
-  <p className="text-justify">
-    As a Software Engineer with a Master of IT & Systems and a Bachelor in Computer Science, I’ve architected a React-based hot-desk booking platform for Bluebird Advisory, automated end-to-end survey workflows at Canberra Cyber Hub, developed Python/Flask APIs to enable smooth migrations at eShipz, and designed responsive Bootstrap sites at Gewissen Digital. I’m passionate about UX-driven design, cloud automation and IoT, and I quickly ramp up new frameworks and tools—combining analytical problem-solving with a collaborative mindset to deliver polished, maintainable solutions.
-  </p>
-</motion.div>
+      initial={fadeUp.hidden}
+      animate={fadeUp.visible}
+      transition={{ delay: 0.5, duration: 0.6 }}
+      className={`max-w-4xl mx-auto mb-8`}
+    >
+      <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="space-y-6">
+          <div className="text-left">
+            <h3 className={`text-2xl font-bold mb-4 ${themeClasses.text}`}>
+              Full-stack developer passionate about creating intuitive applications and automating complex workflows to solve real-world problems.
+            </h3>
+            
+            <p className={`text-lg leading-relaxed ${themeClasses.textSecondary}`}>
+              I enjoy turning ideas into functional solutions, whether it's a sleek web app or an innovative IoT prototype.
+            </p>
+          </div>
+        </div>
+        
+        <div className="space-y-4">
+          <motion.div 
+            whileHover={{ scale: 1.02 }}
+            className={`group p-6 rounded-2xl border ${themeClasses.cardBorder} ${themeClasses.cardBg} transition-all duration-300 hover:border-2 hover:border-blue-500 hover:shadow-lg`}
+          >
+            <h4 className={`font-semibold mb-2 ${themeClasses.text} group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300`}>
+              Recent Impact
+            </h4>
+            <ul className="space-y-2 text-sm">
+              <li className="flex items-start">
+                <span className="text-blue-400 mr-2">•</span>
+                <span className={themeClasses.textMuted}>Built interactive desk booking platform</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-purple-400 mr-2">•</span>
+                <span className={themeClasses.textMuted}>Automated business workflows and surveys</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-green-400 mr-2">•</span>
+                <span className={themeClasses.textMuted}>Developed backend APIs and mobile apps</span>
+              </li>
+              <li className="flex items-start">
+                <span className="text-orange-400 mr-2">•</span>
+                <span className={themeClasses.textMuted}>Created IoT prototypes and automation systems</span>
+              </li>
+            </ul>
+          </motion.div>
+          
+          <div className="flex flex-wrap gap-2">
+            {['Web Development', 'Automation', 'IoT Projects', 'Problem Solving'].map((skill) => (
+              <span key={skill} className={`inline-block px-3 py-1 text-xs rounded-full ${themeClasses.text} ${themeClasses.skillBg} border ${themeClasses.skillBorder}`}>
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </motion.div>
+    
 
           {/* <div className="flex justify-center space-x-6">
             {['LinkedIn', 'GitHub', 'Contact'].map((name) => (
