@@ -265,14 +265,21 @@ const education = [
   {
     institution: 'University of Canberra, Australia',
     degree: 'Master of Information Technology & Systems',
-    period: 'Jul 2023 – May 2025'
+    period: 'Jul 2023 – May 2025',
+    gpa: '6.38 / 7.00',
+    awards: [
+      "Dean’s Excellence Award – Faculty of Science & Technology (2024)",
+      "Dean’s Excellence Award – Faculty of Science & Technology (2025)"
+    ]
   },
   {
     institution: 'Anna University, India',
-    degree: 'Bachelor of Engineering - Computer Science',  // matches résumé
-    period: 'Aug 2016 – Nov 2020'
+    degree: 'Bachelor of Engineering – Computer Science',
+    period: 'Aug 2016 – Nov 2020',
+    classification: 'First Class'
   }
 ];
+
 
 
 const certifications = [
@@ -645,7 +652,7 @@ export default function Portfolio() {
         </div>
 
         {/* Role */}
-        <p className={`text-lg mb-4 italic ${themeClasses.textSecondary}`}>
+        <p className={`text-lg mb-4 ${themeClasses.textSecondary}`}>
           {exp.role}
         </p>
 
@@ -670,7 +677,8 @@ export default function Portfolio() {
 </motion.section>
 
 
-   {/* Education Section */}
+  {/* Education Section */}
+{/* Education Section - Improved Mobile Responsiveness */}
 <motion.section
   ref={sectionRefs.education}
   initial={fadeIn.hidden}
@@ -680,7 +688,7 @@ export default function Portfolio() {
   {/* Heading */}
   <h2
     className={`
-      text-3xl md:text-4xl font-bold mb-10 md:mb-12 text-center
+      text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center
       text-transparent bg-clip-text
       bg-gradient-to-r from-blue-400 to-purple-500
       ${!isDarkMode ? 'drop-shadow-lg' : ''}
@@ -689,7 +697,7 @@ export default function Portfolio() {
     Education
   </h2>
 
-  <div className="max-w-4xl mx-auto space-y-6 sm:space-y-8">
+  <div className="max-w-4xl mx-auto space-y-6">
     {education.map((edu, i) => (
       <motion.div
         key={i}
@@ -704,32 +712,75 @@ export default function Portfolio() {
           hover:border-2 hover:border-purple-500 hover:shadow-lg
         `}
       >
-        {/* Period badge */}
-        <div className="absolute top-2 right-2 sm:top-4 sm:right-4 text-xs font-medium text-purple-500">
-          {edu.period}
+        {/* Mobile-first layout */}
+        <div className="flex flex-col space-y-3">
+          {/* Header: Institution and Period */}
+          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
+            <h3
+              className={`
+                text-lg sm:text-xl md:text-2xl font-semibold
+                transition-all duration-300 leading-tight
+                group-hover:text-transparent group-hover:bg-clip-text
+                group-hover:bg-gradient-to-r from-blue-400 to-purple-500
+                pr-2 sm:pr-0
+              `}
+            >
+              {edu.institution}
+            </h3>
+            <span 
+              className={`
+                text-xs sm:text-sm font-medium text-purple-500 
+                self-start sm:self-center flex-shrink-0
+                bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-full
+                sm:bg-transparent sm:dark:bg-transparent sm:px-0 sm:py-0 sm:rounded-none
+              `}
+            >
+              {edu.period}
+            </span>
+          </div>
+
+          {/* Degree */}
+          <p className={`text-sm sm:text-base italic ${themeClasses.textSecondary} leading-relaxed`}>
+            {edu.degree}
+          </p>
+
+          {/* Academic Performance */}
+          <div className="flex flex-col sm:flex-row sm:gap-4 gap-1">
+            {edu.gpa && (
+              <p className={`text-xs sm:text-sm ${themeClasses.textSecondary}`}>
+                <span className="font-medium text-blue-400">GPA:</span> {edu.gpa}
+              </p>
+            )}
+            {edu.classification && (
+              <p className={`text-xs sm:text-sm ${themeClasses.textSecondary}`}>
+                <span className="font-medium text-blue-400">Grade:</span> {edu.classification}
+              </p>
+            )}
+          </div>
+
+          {/* Awards */}
+          {edu.awards?.length > 0 && (
+            <div className="mt-2">
+              <h4 className={`text-sm font-medium mb-2 text-purple-400`}>
+                Awards & Recognition:
+              </h4>
+              <ul className="space-y-1 pl-2">
+                {edu.awards.map((award, idx) => (
+                  <li key={idx} className="flex items-start">
+                    <span className="text-purple-400 mr-2 mt-1 text-xs">•</span>
+                    <span className={`text-xs sm:text-sm ${themeClasses.textSecondary} leading-relaxed`}>
+                      {award}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-
-        {/* Institution name */}
-        <h3
-          className={`
-            text-xl sm:text-2xl font-semibold mb-2
-            transition-all duration-300
-            group-hover:text-transparent group-hover:bg-clip-text
-            group-hover:bg-gradient-to-r from-blue-400 to-purple-500
-          `}
-        >
-          {edu.institution}
-        </h3>
-
-        {/* Degree */}
-        <p className={`italic ${themeClasses.textSecondary}`}>
-          {edu.degree}
-        </p>
       </motion.div>
     ))}
   </div>
 </motion.section>
-
 
 
 
