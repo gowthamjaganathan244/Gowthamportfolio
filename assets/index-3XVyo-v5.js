@@ -105,7 +105,7 @@ Error generating stack: `+n.message+`
               transition-all duration-300
               group-hover:text-transparent group-hover:bg-clip-text
               group-hover:bg-gradient-to-r from-teal-400 to-blue-500
-            `,children:w.company}),z.jsx("span",{className:`${M.textSecondary} text-sm`,children:w.period})]}),z.jsx("p",{className:`text-lg mb-4 italic ${M.textSecondary}`,children:w.role}),z.jsx("ul",{className:`list-disc list-inside space-y-1 mb-4 ${M.textMuted}`,children:w.highlights.map((L,G)=>z.jsx("li",{children:L},G))}),z.jsx("div",{className:"flex flex-wrap gap-2",children:w.technologies.map((L,G)=>z.jsx("span",{className:"px-3 py-1 rounded-full text-xs",children:L},G))})]},_))})]}),z.jsxs(Yt.section,{ref:c.education,initial:S.hidden,whileInView:S.visible,className:`py-12 md:py-24 px-4 ${M.bg} snap-start`,children:[z.jsx("h2",{className:`
+            `,children:w.company}),z.jsx("span",{className:`${M.textSecondary} text-sm`,children:w.period})]}),z.jsx("p",{className:`text-lg mb-4 ${M.textSecondary}`,children:w.role}),z.jsx("ul",{className:`list-disc list-inside space-y-1 mb-4 ${M.textMuted}`,children:w.highlights.map((L,G)=>z.jsx("li",{children:L},G))}),z.jsx("div",{className:"flex flex-wrap gap-2",children:w.technologies.map((L,G)=>z.jsx("span",{className:"px-3 py-1 rounded-full text-xs",children:L},G))})]},_))})]}),z.jsxs(Yt.section,{ref:c.education,initial:S.hidden,whileInView:S.visible,className:`py-12 md:py-24 px-4 ${M.bg} snap-start`,children:[z.jsx("h2",{className:`
       text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center
       text-transparent bg-clip-text
       bg-gradient-to-r from-blue-400 to-purple-500
