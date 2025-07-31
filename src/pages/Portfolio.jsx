@@ -361,637 +361,698 @@ export default function Portfolio() {
 
   return (
     <div className={`${themeClasses.bg} ${themeClasses.text} font-sans min-h-screen overflow-x-hidden transition-colors duration-300`}>
-      {/* Navigation */}
+      {/* Navigation - Perfect responsive */}
       <motion.nav
-  initial="hidden"
-  animate="visible"
-  variants={fadeIn}
-  className={`fixed top-0 w-full ${themeClasses.navBg} backdrop-blur-md z-50 transition-colors duration-300`}
->
-  <div className="max-w-8xl mx-auto flex items-center justify-between px-4 py-3 md:py-4">
-
-    {/* ─── Logo + Theme Toggle ─── */}
-    <div className="flex items-center space-x-4">
-      {/* Logo: clicking it toggles the theme */}
-      <img
-        src={Logo}
-        alt="Site logo"
-        className="h-8 w-auto cursor-pointer transition-transform hover:scale-105"
-        onClick={toggleTheme}
-      />
-      
-    </div>
-
-    {/* ─── Mobile Hamburger + Desktop Links ─── */}
-    <div className="flex items-center">
-      {/* Mobile Hamburger */}
-      <button
-        className={`md:hidden ${isDarkMode ? 'text-gray-200' : 'text-gray-600'}`}
-        onClick={() => setMenuOpen(o => !o)}
+        initial="hidden"
+        animate="visible"
+        variants={fadeIn}
+        className={`fixed top-0 w-full h-12 sm:h-14 md:h-16 ${themeClasses.navBg} backdrop-blur-md z-50 transition-colors duration-300`}
       >
-        {menuOpen ? <X size={24} /> : <Menu size={24} />}
-      </button>
+        <div className="max-w-7xl mx-auto flex items-center justify-between h-full px-3 sm:px-4 md:px-6 lg:px-8">
+          {/* Logo */}
+          <div className="flex items-center">
+            <img
+              src={Logo}
+              alt="Site logo"
+              className="h-6 sm:h-7 md:h-8 w-auto cursor-pointer transition-transform hover:scale-105"
+              onClick={toggleTheme}
+            />
+          </div>
 
-      {/* Desktop Navigation Links */}
-      <div className="hidden md:flex space-x-6">
-        {Object.keys(sectionRefs).map(key => {
-          const isActive = activeSection === key;
-          const base = 'relative text-sm normal-case tracking-wider py-1 transition-all';
-          const activeClass = isActive ? sectionGradients[key] : themeClasses.textMuted;
-          return (
+          {/* Mobile Hamburger + Desktop Links */}
+          <div className="flex items-center">
+            {/* Mobile Hamburger */}
             <button
-              key={key}
-              onClick={() => scrollToSection(key)}
-              className={`${base} ${
-                isActive 
-                  ? activeClass 
-                  : `${themeClasses.textMuted} hover:${themeClasses.text.split(' ')[0]}`
-              }`}
+              className={`md:hidden p-1 ${isDarkMode ? 'text-gray-200' : 'text-gray-600'}`}
+              onClick={() => setMenuOpen(o => !o)}
             >
-              {key.charAt(0).toUpperCase() + key.slice(1)}
-              {isActive && (
-                <span className="absolute bottom-0 left-1/2 w-4 h-[2px] bg-blue-500 -translate-x-1/2"></span>
-              )}
+              {menuOpen ? <X size={20} /> : <Menu size={20} />}
             </button>
-          );
-        })}
-      </div>
-    </div>
-  </div>
-        {/* Mobile Dropdown */}
-        {menuOpen && (
-  <div className={`md:hidden ${themeClasses.navBg} backdrop-blur-lg transition-colors duration-300`}>
-    {Object.keys(sectionRefs).map(key => {
-      const isActive = activeSection === key;
-      const grad = isActive ? sectionGradients[key] : themeClasses.textSecondary;
-      return (
-        <button
-          key={key}
-          onClick={() => scrollToSection(key)}
-          className={`block w-full text-left px-6 py-3 ${grad} transition-all`}
-        >
-          {key.charAt(0).toUpperCase() + key.slice(1)}
-        </button>
-      );
-    })}
-  </div>
-)}
 
-      </motion.nav>
-      {/* Hero Section */}
-      <motion.section
-        ref={sectionRefs.home}
-        className="relative h-screen flex items-center justify-center overflow-hidden"
-      >
-        {/* Parallax background */}
-        <motion.div
-          style={{ scale }}
-          className={`absolute inset-0 ${themeClasses.bg}`}
-        />
-
-        {/* Content */}
-        <motion.div
-          initial={fadeUp.hidden}
-          animate={fadeUp.visible}
-          className="relative z-10 text-center max-w-4xl px-4"
-        >
-          
-          <h1
-            className={`text-6xl md:text-8xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] via-[#00D9F5] to-violet-400 ${
-              !isDarkMode ? 'drop-shadow-lg' : ''
-            }`}
-          >
-            Gowtham Jaganathan
-          </h1>
-          <p className={`text-2xl md:text-3xl mb-8 ${themeClasses.textSecondary}`}>
-            Software Engineer | Full-Stack Developer & Workflow Automation Specialist
-          </p>
-          <motion.div
-      initial={fadeUp.hidden}
-      animate={fadeUp.visible}
-      transition={{ delay: 0.5, duration: 0.6 }}
-      className={`max-w-4xl mx-auto mb-8`}
-    >
-      <div className="grid md:grid-cols-2 gap-8 items-center">
-        <div className="space-y-6">
-          <div className="text-left">
-            <h3 className={`text-2xl font-bold mb-4 ${themeClasses.text}`}>
-              Full-stack developer passionate about creating intuitive applications and automating complex workflows to solve real-world problems.
-            </h3>
-            
-            <p className={`text-lg leading-relaxed ${themeClasses.textSecondary}`}>
-              I enjoy turning ideas into functional solutions, whether it's a sleek web app or an innovative IoT prototype.
-            </p>
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex space-x-4 lg:space-x-6">
+              {Object.keys(sectionRefs).map(key => {
+                const isActive = activeSection === key;
+                const base = 'relative text-xs lg:text-sm normal-case tracking-wider py-1 px-2 transition-all';
+                const activeClass = isActive ? sectionGradients[key] : themeClasses.textMuted;
+                return (
+                  <button
+                    key={key}
+                    onClick={() => scrollToSection(key)}
+                    className={`${base} ${
+                      isActive 
+                        ? activeClass 
+                        : `${themeClasses.textMuted} hover:${themeClasses.text.split(' ')[0]}`
+                    }`}
+                  >
+                    {key.charAt(0).toUpperCase() + key.slice(1)}
+                    {isActive && (
+                      <span className="absolute bottom-0 left-1/2 w-3 lg:w-4 h-[2px] bg-blue-500 -translate-x-1/2"></span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
         
-        <div className="space-y-4">
-          <motion.div 
-            whileHover={{ scale: 1.02 }}
-            className={`group p-6 rounded-2xl border ${themeClasses.cardBorder} ${themeClasses.cardBg} transition-all duration-300 hover:border-2 hover:border-blue-500 hover:shadow-lg`}
-          >
-            <h4 className={`font-semibold mb-2 ${themeClasses.text} group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r from-blue-400 to-purple-500 transition-all duration-300`}>
-              Recent Impact
-            </h4>
-            <ul className="space-y-2 text-sm">
-              <li className="flex items-start">
-                <span className="text-blue-400 mr-2">•</span>
-                <span className={themeClasses.textMuted}>Built interactive desk booking platform</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-purple-400 mr-2">•</span>
-                <span className={themeClasses.textMuted}>Automated business workflows and surveys</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-green-400 mr-2">•</span>
-                <span className={themeClasses.textMuted}>Developed backend APIs and mobile apps</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-orange-400 mr-2">•</span>
-                <span className={themeClasses.textMuted}>Created IoT prototypes and automation systems</span>
-              </li>
-            </ul>
-          </motion.div>
-          
-          <div className="flex flex-wrap gap-2">
-            {['Web Development', 'Automation', 'IoT Projects', 'Problem Solving'].map((skill) => (
-              <span key={skill} className={`inline-block px-3 py-1 text-xs rounded-full ${themeClasses.text} ${themeClasses.skillBg} border ${themeClasses.skillBorder}`}>
-                {skill}
-              </span>
-            ))}
+        {/* Mobile Dropdown */}
+        {menuOpen && (
+          <div className={`md:hidden ${themeClasses.navBg} backdrop-blur-lg transition-colors duration-300 border-t ${themeClasses.cardBorder}`}>
+            {Object.keys(sectionRefs).map(key => {
+              const isActive = activeSection === key;
+              const grad = isActive ? sectionGradients[key] : themeClasses.textSecondary;
+              return (
+                <button
+                  key={key}
+                  onClick={() => {
+                    scrollToSection(key);
+                    setMenuOpen(false);
+                  }}
+                  className={`block w-full text-left px-4 py-3 text-sm ${grad} transition-all hover:bg-opacity-10 hover:bg-white`}
+                >
+                  {key.charAt(0).toUpperCase() + key.slice(1)}
+                </button>
+              );
+            })}
           </div>
-        </div>
-      </div>
-    </motion.div>
-    
+        )}
+      </motion.nav>
 
-          {/* <div className="flex justify-center space-x-6">
-            {['LinkedIn', 'GitHub', 'Contact'].map((name) => (
-              <motion.a
-                key={name}
-                href="#"
-                whileHover={{ scale: 1.1 }}
-                className={`transition-all ${
-                  isDarkMode
-                    ? 'text-white/80 hover:text-blue-400'
-                    : 'text-gray-600 hover:text-blue-500'
-                }`}
-              >
-                {name}
-              </motion.a>
-            ))}
-          </div> */}
+       {/* Hero Section - Perfect alignment and responsive */}
+      <motion.section
+        ref={sectionRefs.home}
+        className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-12"
+      >
+        <div className={`absolute inset-0 ${themeClasses.bg}`} />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative z-10 w-full max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex flex-col items-center"
+        >
+          {/* Header Content - Centered */}
+          <div className="text-center mb-8 sm:mb-10 md:mb-12">
+            {/* Name - Perfect scaling for all devices */}
+            <h1
+              className={`
+                text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl 
+                font-bold mb-4 sm:mb-6 
+                text-transparent bg-clip-text bg-gradient-to-r from-[#00F5A0] via-[#00D9F5] to-violet-400
+                leading-tight
+                ${!isDarkMode ? 'drop-shadow-lg' : ''}
+              `}
+            >
+              Gowtham Jaganathan
+            </h1>
+            
+            {/* Subtitle - Perfect scaling */}
+            <p className={`
+              text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl 
+              leading-relaxed max-w-4xl mx-auto
+              ${themeClasses.textSecondary}
+            `}>
+              Software Engineer | Full-Stack Developer & Workflow Automation Specialist
+            </p>
+          </div>
+          
+          {/* Main Content Grid - Perfect alignment */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            className="w-full max-w-6xl mx-auto"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left Content - Text aligned left on desktop, center on mobile */}
+              <div className="space-y-6 text-center lg:text-left">
+                <h3 className={`
+                  text-lg xs:text-xl sm:text-2xl md:text-3xl 
+                  font-bold leading-tight
+                  ${themeClasses.text}
+                `}>
+                  Full-stack developer passionate about creating intuitive applications and automating complex workflows to solve real-world problems.
+                </h3>
+                
+                <p className={`
+                  text-base xs:text-lg sm:text-xl 
+                  leading-relaxed
+                  ${themeClasses.textSecondary}
+                `}>
+                  I enjoy turning ideas into functional solutions, whether it's a sleek web app or an innovative IoT prototype.
+                </p>
+              </div>
+              
+              {/* Right Content Card - Perfectly centered */}
+              <div className="flex flex-col items-center lg:items-start space-y-4">
+                <div className={`
+                  w-full group p-5 sm:p-6 md:p-7 rounded-2xl 
+                  border ${themeClasses.cardBorder} ${themeClasses.cardBg} 
+                  transition-all duration-300 
+                  hover:border-2 hover:border-blue-500 hover:shadow-xl
+                  transform hover:scale-[1.02]
+                `}>
+                  <h4 className={`
+                    text-base sm:text-lg font-semibold mb-4
+                    ${themeClasses.text} 
+                    group-hover:text-transparent group-hover:bg-clip-text 
+                    group-hover:bg-gradient-to-r from-blue-400 to-purple-500 
+                    transition-all duration-300
+                  `}>
+                    Recent Impact
+                  </h4>
+                  
+                  <ul className="space-y-3">
+                    {[
+                      { color: 'blue-400', text: 'Built interactive desk booking platform' },
+                      { color: 'purple-400', text: 'Automated business workflows and surveys' },
+                      { color: 'green-400', text: 'Developed backend APIs and mobile apps' },
+                      { color: 'orange-400', text: 'Created IoT prototypes and automation systems' }
+                    ].map((item, idx) => (
+                      <li key={idx} className="flex items-start">
+                        <span className={`text-${item.color} mr-3 mt-1 text-sm font-bold`}>•</span>
+                        <span className={`${themeClasses.textMuted} text-sm sm:text-base leading-relaxed`}>
+                          {item.text}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                
+                {/* Skills Tags - Centered on mobile, left on desktop */}
+                <div className="flex flex-wrap gap-2 justify-center lg:justify-start w-full">
+                  {['Web Development', 'Automation', 'IoT Projects', 'Problem Solving'].map((skill) => (
+                    <span 
+                      key={skill} 
+                      className={`
+                        inline-block px-3 py-1.5 
+                        text-xs sm:text-sm font-medium
+                        rounded-full 
+                        ${themeClasses.text} ${themeClasses.skillBg} 
+                        border ${themeClasses.skillBorder}
+                        transition-all duration-200 hover:scale-105
+                      `}
+                    >
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </motion.section>
-
-    {/* Technical Skills & Interests */}
-<motion.section
-  ref={sectionRefs.skills}
-  initial={fadeIn.hidden}
-  whileInView={fadeIn.visible}
-  className={`py-24 px-4 ${themeClasses.bg} snap-start`}
->
-  <h2
-    className={`
-      text-4xl font-bold mb-12 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-teal-200 to-emerald-500 
-      ${!isDarkMode ? 'drop-shadow-lg' : 'drop-shadow-xl'}
-    `}
-  >
-    Technical Skills & Interests
-  </h2>
-
-  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {Object.entries(techSkillsInterests).map(([category, items]) => (
-      <motion.div
-        key={category}
-        initial={fadeUp.hidden}
-        whileInView={fadeUp.visible}
-        whileHover={{ scale: 1.03 }}
-        className={`
-          group p-6 rounded-2xl border ${themeClasses.cardBorder} ${themeClasses.cardBg}
-          transition-shadow duration-300
-          hover:border-2 hover:border-teal-300 hover:shadow-2xl
-        `}
+      
+      {/* Technical Skills Section - Perfect responsive */}
+      <motion.section
+        ref={sectionRefs.skills}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className={`py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8 ${themeClasses.bg} snap-start`}
       >
-        <h3
+        <h2
           className={`
-            text-xl font-semibold mb-4 transition-all
-            group-hover:text-transparent group-hover:bg-clip-text
-            group-hover:bg-gradient-to-r group-hover:from-teal-200
-            group-hover:to-emerald-500
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl 
+            font-bold mb-8 sm:mb-10 md:mb-12 text-center
+            text-transparent bg-clip-text
+            bg-gradient-to-r from-teal-200 to-emerald-500 
+            leading-tight
+            ${!isDarkMode ? 'drop-shadow-lg' : 'drop-shadow-xl'}
           `}
         >
-          {category}
-        </h3>
-        <ul className="space-y-2">
-          {items.map(item => (
-            <li key={item} className="flex items-center">
-              <span className="w-2 h-2 bg-teal-300 rounded-full mr-3 flex-shrink-0"></span>
-              <span className={themeClasses.textSecondary}>{item}</span>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
-    ))}
-  </div>
-</motion.section>
+          Technical Skills & Interests
+        </h2>
 
-
-
-
-      {/* Experience Section */}
-<motion.section
-  ref={sectionRefs.experience}
-  initial={fadeIn.hidden}
-  whileInView={fadeIn.visible}
-  className={`py-24 px-4 ${themeClasses.bg} snap-start`}
->
-  {/* Section Heading */}
-  <h2
-    className={`
-      text-4xl font-bold mb-12 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-teal-400 to-blue-500
-      ${!isDarkMode ? 'drop-shadow-lg' : ''}
-    `}
-  >
-    Professional Experience
-  </h2>
-
-  <div className="max-w-4xl mx-auto space-y-10">
-    {experiences.map((exp, i) => (
-      <motion.div
-        key={i}
-        initial={fadeUp.hidden}
-        whileInView={fadeUp.visible}
-        whileHover={{ scale: 1.02 }}
-        className={`
-          group
-          rounded-2xl p-6 border ${themeClasses.cardBorder} ${themeClasses.cardBg}
-          transition-all duration-300
-          hover:border-2 hover:border-blue-500 hover:shadow-lg
-        `}
-      >
-        {/* Company & Period */}
-        <div className="flex justify-between items-center mb-4">
-          <h3
-            className={`
-              text-2xl font-semibold
-              transition-all duration-300
-              group-hover:text-transparent group-hover:bg-clip-text
-              group-hover:bg-gradient-to-r from-teal-400 to-blue-500
-            `}
-          >
-            {exp.company}
-          </h3>
-          <span className={`${themeClasses.textSecondary} text-sm`}>
-            {exp.period}
-          </span>
-        </div>
-
-        {/* Role */}
-        <p className={`text-lg mb-4 ${themeClasses.textSecondary}`}>
-          {exp.role}
-        </p>
-
-        {/* Highlights */}
-        <ul className={`list-disc list-inside space-y-1 mb-4 ${themeClasses.textMuted}`}>
-          {exp.highlights.map((hl, idx) => (
-            <li key={idx}>{hl}</li>
-          ))}
-        </ul>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2">
-          {exp.technologies.map((tech, idx) => (
-            <span key={idx} className="px-3 py-1 rounded-full text-xs">
-              {tech}
-            </span>
-          ))}
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</motion.section>
-
-
-  {/* Education Section */}
-{/* Education Section - Improved Mobile Responsiveness */}
-<motion.section
-  ref={sectionRefs.education}
-  initial={fadeIn.hidden}
-  whileInView={fadeIn.visible}
-  className={`py-12 md:py-24 px-4 ${themeClasses.bg} snap-start`}
->
-  {/* Heading */}
-  <h2
-    className={`
-      text-3xl md:text-4xl font-bold mb-8 md:mb-12 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-blue-400 to-purple-500
-      ${!isDarkMode ? 'drop-shadow-lg' : ''}
-    `}
-  >
-    Education
-  </h2>
-
-  <div className="max-w-4xl mx-auto space-y-6">
-    {education.map((edu, i) => (
-      <motion.div
-        key={i}
-        initial={fadeUp.hidden}
-        whileInView={fadeUp.visible}
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: 'spring', stiffness: 120, damping: 20 }}
-        className={`
-          group relative rounded-2xl p-4 sm:p-6 border
-          ${themeClasses.cardBorder} ${themeClasses.cardBg}
-          transition-all duration-300
-          hover:border-2 hover:border-purple-500 hover:shadow-lg
-        `}
-      >
-        {/* Mobile-first layout */}
-        <div className="flex flex-col space-y-3">
-          {/* Header: Institution and Period */}
-          <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
-            <h3
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {Object.entries(techSkillsInterests).map(([category, items], index) => (
+            <motion.div
+              key={category}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
               className={`
-                text-lg sm:text-xl md:text-2xl font-semibold
-                transition-all duration-300 leading-tight
-                group-hover:text-transparent group-hover:bg-clip-text
-                group-hover:bg-gradient-to-r from-blue-400 to-purple-500
-                pr-2 sm:pr-0
+                group p-4 sm:p-5 md:p-6 
+                rounded-xl sm:rounded-2xl 
+                border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+                transition-all duration-300
+                hover:border-2 hover:border-teal-300 hover:shadow-lg
               `}
             >
-              {edu.institution}
-            </h3>
-            <span 
-              className={`
-                text-xs sm:text-sm font-medium text-purple-500 
-                self-start sm:self-center flex-shrink-0
-                bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-full
-                sm:bg-transparent sm:dark:bg-transparent sm:px-0 sm:py-0 sm:rounded-none
-              `}
-            >
-              {edu.period}
-            </span>
-          </div>
-
-          {/* Degree */}
-          <p className={`text-sm sm:text-base italic ${themeClasses.textSecondary} leading-relaxed`}>
-            {edu.degree}
-          </p>
-
-          {/* Academic Performance */}
-          <div className="flex flex-col sm:flex-row sm:gap-4 gap-1">
-            {edu.gpa && (
-              <p className={`text-xs sm:text-sm ${themeClasses.textSecondary}`}>
-                <span className="font-medium text-blue-400">GPA:</span> {edu.gpa}
-              </p>
-            )}
-            {edu.classification && (
-              <p className={`text-xs sm:text-sm ${themeClasses.textSecondary}`}>
-                <span className="font-medium text-blue-400">Grade:</span> {edu.classification}
-              </p>
-            )}
-          </div>
-
-          {/* Awards */}
-          {edu.awards?.length > 0 && (
-            <div className="mt-2">
-              <h4 className={`text-sm font-medium mb-2 text-purple-400`}>
-                Awards & Recognition:
-              </h4>
-              <ul className="space-y-1 pl-2">
-                {edu.awards.map((award, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="text-purple-400 mr-2 mt-1 text-xs">•</span>
-                    <span className={`text-xs sm:text-sm ${themeClasses.textSecondary} leading-relaxed`}>
-                      {award}
-                    </span>
+              <h3
+                className={`
+                  text-base sm:text-lg md:text-xl 
+                  font-semibold mb-3 sm:mb-4 
+                  transition-all
+                  group-hover:text-transparent group-hover:bg-clip-text
+                  group-hover:bg-gradient-to-r group-hover:from-teal-200
+                  group-hover:to-emerald-500
+                `}
+              >
+                {category}
+              </h3>
+              <ul className="space-y-2 sm:space-y-3">
+                {items.map(item => (
+                  <li key={item} className="flex items-center">
+                    <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-teal-300 rounded-full mr-2 sm:mr-3 flex-shrink-0"></span>
+                    <span className={`${themeClasses.textSecondary} text-xs sm:text-sm md:text-base`}>{item}</span>
                   </li>
                 ))}
               </ul>
-            </div>
-          )}
+            </motion.div>
+          ))}
         </div>
-      </motion.div>
-    ))}
-  </div>
-</motion.section>
+      </motion.section>
 
-
-
-
-{/* Certifications Section */}
-<motion.section
-  ref={sectionRefs.certifications}
-  initial={fadeIn.hidden}
-  whileInView={fadeIn.visible}
-  className={`py-24 px-4 ${themeClasses.bg} snap-start`}
->
-  {/* Section Heading */}
-  <h2
-    className={`
-      text-4xl font-bold mb-12 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-purple-400 to-pink-400
-      ${!isDarkMode ? 'drop-shadow-lg' : ''}
-    `}
-  >
-    Certifications
-  </h2>
-
-  <div className="max-w-4xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-    {certifications.map((cert, i) => (
-      <motion.div
-        key={i}
-        initial={fadeUp.hidden}
-        whileInView={fadeUp.visible}
-        whileHover={{ scale: 1.02 }}
-        className={`
-          group
-          rounded-2xl p-6 border ${themeClasses.cardBorder} ${themeClasses.cardBg}
-          transition-all duration-300
-          hover:border-2 hover:border-pink-400 hover:shadow-lg
-        `}
+      {/* Experience Section - Perfect responsive */}
+      <motion.section
+        ref={sectionRefs.experience}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className={`py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8 ${themeClasses.bg} snap-start`}
       >
-        <div className="flex items-center space-x-3">
-          {/* Bullet dot */}
-          <span className="w-2 h-2 bg-purple-400 rounded-full flex-shrink-0"></span>
-
-          {/* Certificate text */}
-          <p
-            className={`
-              text-sm transition-all duration-300
-              group-hover:text-transparent group-hover:bg-clip-text
-              group-hover:bg-gradient-to-r from-purple-400 to-pink-400
-            `}
-          >
-            {cert}
-          </p>
-        </div>
-      </motion.div>
-    ))}
-  </div>
-</motion.section>
-
-
-{/* Selected Projects Section */}
-<motion.section
-  ref={sectionRefs.projects}
-  initial={fadeIn.hidden}
-  whileInView={fadeIn.visible}
-  className={`py-24 px-4 ${themeClasses.bg} snap-start`}
->
-  {/* Section Heading */}
-  <h2
-    className={`
-      text-4xl font-bold mb-12 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-pink-400 to-red-500
-      ${!isDarkMode ? 'drop-shadow-lg' : ''}
-    `}
-  >
-    Selected Projects
-  </h2>
-
-  <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {projects.map((proj, i) => (
-      <motion.div
-        key={i}
-        initial={fadeUp.hidden}
-        whileInView={fadeUp.visible}
-        whileHover={{ scale: 1.02 }}
-        className={`
-          group relative rounded-2xl p-6 border 
-          ${themeClasses.cardBorder} ${themeClasses.cardBg}
-          transition-all duration-300
-          hover:border-2 hover:border-red-500 hover:shadow-lg
-        `}
-      >
-        {/* Corner Dot */}
-        <span className="absolute top-4 right-4 w-2 h-2 bg-pink-400 rounded-full"></span>
-
-        {/* Project Title */}
-        <h3
+        <h2
           className={`
-            text-xl font-bold mb-3
-            transition-all duration-300
-            group-hover:text-transparent group-hover:bg-clip-text
-            group-hover:bg-gradient-to-r from-pink-400 to-red-500
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl 
+            font-bold mb-8 sm:mb-10 md:mb-12 text-center
+            text-transparent bg-clip-text
+            bg-gradient-to-r from-teal-400 to-blue-500
+            leading-tight
+            ${!isDarkMode ? 'drop-shadow-lg' : ''}
           `}
         >
-          {proj.title}
-        </h3>
+          Professional Experience
+        </h2>
 
-        {/* Description */}
-        <p className={`${themeClasses.textSecondary} mb-4 text-sm`}>
-          {proj.description}
-        </p>
-
-        {/* Key Features */}
-        <ul className={`list-disc list-inside mb-4 space-y-1 ${themeClasses.textMuted}`}>
-          {proj.features.slice(0, 8).map((feat, idx) => (
-            <li key={idx}>{feat}</li>
-          ))}
-        </ul>
-
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2">
-          {proj.technologies.map((tech, idx) => (
-            <span
-              key={idx}
-              className={`inline-block px-2 py-1 text-xs rounded-full ${themeClasses.text} ${themeClasses.skillBg} border ${themeClasses.skillBorder}`}
+        <div className="max-w-5xl mx-auto space-y-6 sm:space-y-8 md:space-y-10">
+          {experiences.map((exp, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className={`
+                group rounded-xl sm:rounded-2xl 
+                p-4 sm:p-5 md:p-6 
+                border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+                transition-all duration-300
+                hover:border-2 hover:border-blue-500 hover:shadow-lg
+              `}
             >
-              {tech}
-            </span>
+              {/* Company & Period */}
+              <div className="flex flex-col xs:flex-row xs:justify-between xs:items-start gap-2 mb-3 sm:mb-4">
+                <h3
+                  className={`
+                    text-lg xs:text-xl sm:text-2xl md:text-3xl 
+                    font-semibold leading-tight
+                    transition-all duration-300
+                    group-hover:text-transparent group-hover:bg-clip-text
+                    group-hover:bg-gradient-to-r from-teal-400 to-blue-500
+                  `}
+                >
+                  {exp.company}
+                </h3>
+                <span className={`
+                  ${themeClasses.textSecondary} 
+                  text-xs sm:text-sm 
+                  flex-shrink-0
+                  bg-blue-50 dark:bg-blue-900/20 
+                  px-2 py-1 rounded-full
+                  xs:bg-transparent xs:dark:bg-transparent xs:px-0 xs:py-0
+                `}>
+                  {exp.period}
+                </span>
+              </div>
+
+              {/* Role */}
+              <p className={`text-sm sm:text-base md:text-lg mb-3 sm:mb-4 ${themeClasses.textSecondary} italic`}>
+                {exp.role}
+              </p>
+
+              {/* Highlights */}
+              <ul className={`list-disc list-inside space-y-1 sm:space-y-2 mb-4 ${themeClasses.textMuted}`}>
+                {exp.highlights.map((hl, idx) => (
+                  <li key={idx} className="text-xs sm:text-sm md:text-base leading-relaxed pl-1">
+                    {hl}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
+                {exp.technologies.map((tech, idx) => (
+                  <span 
+                    key={idx} 
+                    className={`
+                      px-2 sm:px-3 py-1 
+                      rounded-full 
+                      text-xs sm:text-xs
+                      ${themeClasses.text} ${themeClasses.skillBg} 
+                      border ${themeClasses.skillBorder}
+                    `}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           ))}
         </div>
-      </motion.div>
-    ))}
-  </div>
-</motion.section>
+      </motion.section>
 
-
-
-      {/* Contact Section */}
-<motion.section
-  ref={sectionRefs.contact}
-  initial={fadeIn.hidden}
-  whileInView={fadeIn.visible}
-  className={`py-24 px-4 ${themeClasses.bg} snap-start`}
->
-  {/* Section Heading */}
-  <h2
-    className={`
-      text-4xl font-bold mb-6 text-center
-      text-transparent bg-clip-text
-      bg-gradient-to-r from-red-500 to-orange-400
-      ${!isDarkMode ? 'drop-shadow-lg' : ''}
-    `}
-  >
-    Let’s Connect
-  </h2>
-  <p className={`text-lg text-center mb-12 ${themeClasses.textSecondary}`}>
-    I’m always keen to chat about new projects and opportunities. Find me on&nbsp;
-    <span className="font-semibold">LinkedIn</span>.
-  </p>
-
-  {/* LinkedIn Card */}
-  <motion.div
-    whileHover={{ scale: 1.03 }}
-    className={`
-      max-w-md mx-auto flex flex-col items-center p-6 rounded-2xl
-      border ${themeClasses.cardBorder} ${themeClasses.cardBg}
-      transition-shadow duration-300 hover:shadow-2xl
-    `}
-  >
-  
-    <h3 className="text-xl font-semibold mb-2">LinkedIn</h3>
-    <p className={`mb-4 ${themeClasses.textSecondary}`}>
-      /in/gowtham-jaganathan-0b5354280
-    </p>
-    <motion.a
-      href="https://www.linkedin.com/in/gowtham-jaganathan-0b5354280/"
-      target="_blank"
-      rel="noopener noreferrer"
-      whileHover={{ scale: 1.05 }}
-      className={`
-        inline-block px-6 py-2 rounded-full
-        bg-gradient-to-r from-red-500 to-orange-400
-        text-white font-medium
-        transition-all duration-300
-        hover:opacity-90
-      `}
-    >
-      Visit Profile
-    </motion.a>
-  </motion.div>
-</motion.section>
-
-
-      {/* Footer */}
-<footer
-  className={`${themeClasses.bg} py-6 border-t ${themeClasses.footerBorder} transition-colors duration-300`}
->
-  <div className="max-w-8xl mx-auto px-4 flex justify-end">
-    <p className={`${themeClasses.textMuted} text-sm`}>{' '}Website designed by
-      © {new Date().getFullYear()}{' '}
-      <span
-        style={{ fontFamily: "'Lucida Handwriting', cursive" }}
-        className="text-base"
+      {/* Education Section - Perfect responsive */}
+      <motion.section
+        ref={sectionRefs.education}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className={`py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8 ${themeClasses.bg} snap-start`}
       >
-        Gowtham Jaganathan
-      </span>
-    
-    </p>
-  </div>
-</footer>
+        <h2
+          className={`
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl 
+            font-bold mb-8 sm:mb-10 md:mb-12 text-center
+            text-transparent bg-clip-text
+            bg-gradient-to-r from-blue-400 to-purple-500
+            leading-tight
+            ${!isDarkMode ? 'drop-shadow-lg' : ''}
+          `}
+        >
+          Education
+        </h2>
 
+        <div className="max-w-5xl mx-auto space-y-4 sm:space-y-6">
+          {education.map((edu, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className={`
+                group relative rounded-xl sm:rounded-2xl 
+                p-4 sm:p-5 md:p-6 
+                border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+                transition-all duration-300
+                hover:border-2 hover:border-purple-500 hover:shadow-lg
+              `}
+            >
+              <div className="flex flex-col space-y-3 sm:space-y-4">
+                {/* Institution and Period */}
+                <div className="flex flex-col xs:flex-row xs:justify-between xs:items-start gap-2">
+                  <h3
+                    className={`
+                      text-base xs:text-lg sm:text-xl md:text-2xl 
+                      font-semibold leading-tight
+                      transition-all duration-300
+                      group-hover:text-transparent group-hover:bg-clip-text
+                      group-hover:bg-gradient-to-r from-blue-400 to-purple-500
+                    `}
+                  >
+                    {edu.institution}
+                  </h3>
+                  <span 
+                    className={`
+                      text-xs sm:text-sm font-medium text-purple-500 
+                      self-start xs:self-center flex-shrink-0
+                      bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-full
+                      xs:bg-transparent xs:dark:bg-transparent xs:px-0 xs:py-0 xs:rounded-none
+                    `}
+                  >
+                    {edu.period}
+                  </span>
+                </div>
 
+                {/* Degree */}
+                <p className={`text-sm sm:text-base md:text-lg italic ${themeClasses.textSecondary} leading-relaxed`}>
+                  {edu.degree}
+                </p>
+
+                {/* Academic Performance */}
+                <div className="flex flex-col xs:flex-row xs:gap-4 gap-1">
+                  {edu.gpa && (
+                    <p className={`text-xs sm:text-sm ${themeClasses.textSecondary}`}>
+                      <span className="font-medium text-blue-400">GPA:</span> {edu.gpa}
+                    </p>
+                  )}
+                  {edu.classification && (
+                    <p className={`text-xs sm:text-sm ${themeClasses.textSecondary}`}>
+                      <span className="font-medium text-blue-400">Grade:</span> {edu.classification}
+                    </p>
+                  )}
+                </div>
+
+                {/* Awards */}
+                {edu.awards?.length > 0 && (
+                  <div className="mt-2">
+                    <h4 className={`text-sm sm:text-base font-medium mb-2 text-purple-400`}>
+                      Awards & Recognition:
+                    </h4>
+                    <ul className="space-y-1 pl-2">
+                      {edu.awards.map((award, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="text-purple-400 mr-2 mt-1 text-xs">•</span>
+                          <span className={`text-xs sm:text-sm ${themeClasses.textSecondary} leading-relaxed`}>
+                            {award}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Certifications Section - Perfect responsive */}
+      <motion.section
+        ref={sectionRefs.certifications}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className={`py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8 ${themeClasses.bg} snap-start`}
+      >
+        <h2
+          className={`
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl 
+            font-bold mb-8 sm:mb-10 md:mb-12 text-center
+            text-transparent bg-clip-text
+            bg-gradient-to-r from-purple-400 to-pink-400
+            leading-tight
+            ${!isDarkMode ? 'drop-shadow-lg' : ''}
+          `}
+        >
+          Certifications
+        </h2>
+
+        <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+          {certifications.map((cert, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.05 }}
+              viewport={{ once: true }}
+              className={`
+                group rounded-xl sm:rounded-2xl 
+                p-4 sm:p-5 md:p-6 
+                border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+                transition-all duration-300
+                hover:border-2 hover:border-pink-400 hover:shadow-lg
+              `}
+            >
+              <div className="flex items-center space-x-3">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-purple-400 rounded-full flex-shrink-0"></span>
+                <p
+                  className={`
+                    text-xs sm:text-sm md:text-base 
+                    transition-all duration-300 leading-relaxed
+                    group-hover:text-transparent group-hover:bg-clip-text
+                    group-hover:bg-gradient-to-r from-purple-400 to-pink-400
+                  `}
+                >
+                  {cert}
+                </p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Projects Section - Perfect responsive */}
+      <motion.section
+        ref={sectionRefs.projects}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className={`py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8 ${themeClasses.bg} snap-start`}
+      >
+        <h2
+          className={`
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl 
+            font-bold mb-8 sm:mb-10 md:mb-12 text-center
+            text-transparent bg-clip-text
+            bg-gradient-to-r from-pink-400 to-red-500
+            leading-tight
+            ${!isDarkMode ? 'drop-shadow-lg' : ''}
+          `}
+        >
+          Selected Projects
+        </h2>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+          {projects.map((proj, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className={`
+                group relative rounded-xl sm:rounded-2xl 
+                p-4 sm:p-5 md:p-6 
+                border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+                transition-all duration-300
+                hover:border-2 hover:border-red-500 hover:shadow-lg
+                flex flex-col h-full
+              `}
+            >
+              <span className="absolute top-3 sm:top-4 right-3 sm:right-4 w-1.5 sm:w-2 h-1.5 sm:h-2 bg-pink-400 rounded-full"></span>
+
+              <h3
+                className={`
+                  text-base sm:text-lg md:text-xl 
+                  font-bold mb-3 pr-6
+                  transition-all duration-300
+                  group-hover:text-transparent group-hover:bg-clip-text
+                  group-hover:bg-gradient-to-r from-pink-400 to-red-500
+                `}
+              >
+                {proj.title}
+              </h3>
+
+              <p className={`${themeClasses.textSecondary} mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed flex-grow`}>
+                {proj.description}
+              </p>
+
+              <ul className={`list-disc list-inside mb-3 sm:mb-4 space-y-1 ${themeClasses.textMuted} flex-grow`}>
+                {proj.features.slice(0, 6).map((feat, idx) => (
+                  <li key={idx} className="text-xs sm:text-sm leading-relaxed pl-1">{feat}</li>
+                ))}
+              </ul>
+
+              <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto">
+                {proj.technologies.map((tech, idx) => (
+                  <span
+                    key={idx}
+                    className={`
+                      inline-block px-2 sm:px-3 py-1 
+                      text-xs rounded-full 
+                      ${themeClasses.text} ${themeClasses.skillBg} 
+                      border ${themeClasses.skillBorder}
+                    `}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* Contact Section - Perfect responsive */}
+      <motion.section
+        ref={sectionRefs.contact}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-100px" }}
+        className={`py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-4 md:px-6 lg:px-8 ${themeClasses.bg} snap-start`}
+      >
+        <h2
+          className={`
+            text-2xl xs:text-3xl sm:text-4xl md:text-5xl 
+            font-bold mb-4 sm:mb-6 text-center
+            text-transparent bg-clip-text
+            bg-gradient-to-r from-red-500 to-orange-400
+            leading-tight
+            ${!isDarkMode ? 'drop-shadow-lg' : ''}
+          `}
+        >
+          Let's Connect
+        </h2>
+        
+        <p className={`
+          text-sm sm:text-base md:text-lg 
+          text-center mb-8 sm:mb-10 md:mb-12 
+          leading-relaxed px-4
+          ${themeClasses.textSecondary}
+        `}>
+          I'm always keen to chat about new projects and opportunities. Find me on{' '}
+          <span className="font-semibold">LinkedIn</span>.
+        </p>
+
+        <div
+          className={`
+            max-w-sm sm:max-w-md mx-auto
+            flex flex-col items-center 
+            p-4 sm:p-5 md:p-6 
+            rounded-xl sm:rounded-2xl
+            border ${themeClasses.cardBorder} ${themeClasses.cardBg}
+            transition-shadow duration-300 hover:shadow-lg
+          `}
+        >
+          <h3 className="text-lg sm:text-xl font-semibold mb-2">LinkedIn</h3>
+          <p className={`mb-4 sm:mb-6 ${themeClasses.textSecondary} text-sm sm:text-base text-center`}>
+            /in/gowtham-jaganathan-0b5354280
+          </p>
+          <a
+            href="https://www.linkedin.com/in/gowtham-jaganathan-0b5354280/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`
+              inline-block px-4 sm:px-6 py-2 sm:py-3 
+              rounded-full text-sm sm:text-base
+              bg-gradient-to-r from-red-500 to-orange-400
+              text-white font-medium
+              transition-all duration-300
+              hover:opacity-90 hover:scale-105
+              focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
+            `}
+          >
+            Visit Profile
+          </a>
+        </div>
+      </motion.section>
+
+      {/* Footer - Perfect responsive */}
+      <footer
+        className={`${themeClasses.bg} py-4 sm:py-6 border-t ${themeClasses.footerBorder} transition-colors duration-300`}
+      >
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 flex justify-center">
+          <p className={`${themeClasses.textMuted} text-xs sm:text-sm text-center leading-relaxed`}>
+            Website designed by © {new Date().getFullYear()}{' '}
+            <span
+              style={{ fontFamily: "'Lucida Handwriting', cursive" }}
+              className="text-sm sm:text-base"
+            >
+              Gowtham Jaganathan
+            </span>
+          </p>
+        </div>
+      </footer>
     </div>
   );
 }
