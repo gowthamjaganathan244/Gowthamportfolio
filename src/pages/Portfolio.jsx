@@ -1,5 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+
+
 import Logo from '../assets/GJ.png'
 import { Menu, X,} from 'lucide-react';
 
@@ -416,27 +418,78 @@ export default function Portfolio() {
           </div>
         </div>
         
-        {/* Mobile Dropdown */}
-        {menuOpen && (
-          <div className={`md:hidden ${themeClasses.navBg} backdrop-blur-lg transition-colors duration-300 border-t ${themeClasses.cardBorder}`}>
-            {Object.keys(sectionRefs).map(key => {
-              const isActive = activeSection === key;
-              const grad = isActive ? sectionGradients[key] : themeClasses.textSecondary;
-              return (
-                <button
-                  key={key}
-                  onClick={() => {
-                    scrollToSection(key);
-                    setMenuOpen(false);
-                  }}
-                  className={`block w-full text-left px-4 py-3 text-sm ${grad} transition-all hover:bg-opacity-10 hover:bg-white`}
-                >
-                  {key.charAt(0).toUpperCase() + key.slice(1)}
-                </button>
-              );
-            })}
-          </div>
-        )}
+      
+      
+
+
+
+<AnimatePresence>
+  {menuOpen && (
+    <motion.div
+      key="mobile-menu"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ type: 'spring', stiffness: 400, damping: 32 }}
+      className={`
+        md:hidden fixed top-0 left-0 w-full
+        ${isDarkMode ? 'bg-black' : 'bg-white'}
+        pt-14 pb-4 z-40 shadow-md overflow-auto
+      `}
+      style={{ paddingTop: 'calc(56px + env(safe-area-inset-top))' }}
+    >
+      {/* Close button */}
+      <motion.button
+        whileTap={{ scale: 0.9 }}
+        onClick={() => setMenuOpen(false)}
+        className={`
+          absolute top-4 right-4 p-2 rounded-full
+          ${isDarkMode ? 'bg-black' : 'bg-white'}
+          transition
+        `}
+        aria-label="Close menu"
+      >
+        <X size={24} />
+      </motion.button>
+
+      {/* Menu items */}
+      <div className="flex flex-col mt-2">
+        {Object.keys(sectionRefs).map((key, idx) => {
+          const isActive = activeSection === key;
+          const textClass = isActive
+            ? sectionGradients[key]
+            : themeClasses.textSecondary;
+
+          return (
+            <motion.button
+              key={key}
+              custom={idx}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: idx * 0.05 }} // 50 ms stagger
+              onClick={() => {
+                scrollToSection(key);
+                setMenuOpen(false);
+              }}
+              className={`
+                w-full text-left px-6 py-3 text-base
+                ${textClass}
+                ${isDarkMode ? 'bg-black' : 'bg-white'}
+                transition-colors
+              `}
+            >
+              {key.charAt(0).toUpperCase() + key.slice(1)}
+            </motion.button>
+          );
+        })}
+      </div>
+    </motion.div>
+  )}
+</AnimatePresence>
+
+
+
+
       </motion.nav>
 
        {/* Hero Section - Perfect alignment and responsive */}
