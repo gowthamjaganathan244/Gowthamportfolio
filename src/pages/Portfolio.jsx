@@ -680,7 +680,7 @@ export default function Portfolio() {
         </div>
       </motion.section>
 
-      {/* Experience Section - Perfect responsive */}
+      {/* Experience Section*/}
       <motion.section
         ref={sectionRefs.experience}
         initial={{ opacity: 0 }}
@@ -735,7 +735,7 @@ export default function Portfolio() {
                   ${themeClasses.textSecondary} 
                   text-xs sm:text-sm 
                   flex-shrink-0
-                  bg-blue-50 dark:bg-blue-900/20 
+                 
                   px-2 py-1 rounded-full
                   xs:bg-transparent xs:dark:bg-transparent xs:px-0 xs:py-0
                 `}>
@@ -744,7 +744,7 @@ export default function Portfolio() {
               </div>
 
               {/* Role */}
-              <p className={`text-sm sm:text-base md:text-lg mb-3 sm:mb-4 ${themeClasses.textSecondary} italic`}>
+              <p className={`text-sm sm:text-base md:text-lg mb-3 sm:mb-4 ${themeClasses.textSecondary}`}>
                 {exp.role}
               </p>
 
@@ -835,7 +835,7 @@ export default function Portfolio() {
                     className={`
                       text-xs sm:text-sm font-medium text-purple-500 
                       self-start xs:self-center flex-shrink-0
-                      bg-purple-100 dark:bg-purple-900/30 px-2 py-1 rounded-full
+                      
                       xs:bg-transparent xs:dark:bg-transparent xs:px-0 xs:py-0 xs:rounded-none
                     `}
                   >
