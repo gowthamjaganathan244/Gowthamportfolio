@@ -16,8 +16,32 @@ const navItems = [
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   const [activeSection, setActiveSection] = useState("About")
+
+  const handleNavClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    item: { name: string; href: string }
+  ) => {
+    event.preventDefault()
+
+    setActiveSection(item.name)
+    setIsOpen(false)
+
+    const sectionId = item.href.replace("#", "")
+    const element = document.getElementById(sectionId)
+
+    if (element) {
+      window.setTimeout(() => {
+        element.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        })
+
+        window.history.pushState(null, "", item.href)
+      }, 120)
+    }
+  }
 
   useEffect(() => {
     const updateNavbar = () => {
@@ -57,7 +81,7 @@ export function Navbar() {
   useEffect(() => {
     const handleEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setMobileMenuOpen(false)
+        setIsOpen(false)
       }
     }
 
@@ -78,7 +102,12 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <a href="#hero" className="group flex items-center font-display text-2xl font-bold tracking-tighter" aria-label="Home">
+        <a
+          href="#hero"
+          className="group flex items-center font-display text-2xl font-bold tracking-tighter"
+          aria-label="Home"
+          onClick={(event) => handleNavClick(event, { name: "About", href: "#hero" })}
+        >
           <span className="text-white transition-colors group-hover:text-aurora-teal/90">G</span>
           <span className="bg-gradient-to-br from-aurora-teal to-aurora-cyan bg-clip-text text-transparent">J</span>
         </a>
@@ -89,10 +118,7 @@ export function Navbar() {
               key={item.name}
               href={item.href}
               className="relative px-4 py-2 text-sm font-medium transition-colors"
-              onClick={() => {
-                setActiveSection(item.name)
-                setMobileMenuOpen(false)
-              }}
+              onClick={(event) => handleNavClick(event, item)}
             >
               <span
                 className={cn(
@@ -117,22 +143,23 @@ export function Navbar() {
         </nav>
 
         <button
+          type="button"
           className="rounded-md p-2 text-slate-300 hover:text-white md:hidden"
-          onClick={() => setMobileMenuOpen((value) => !value)}
+          onClick={() => setIsOpen((value) => !value)}
           aria-label="Toggle menu"
-          aria-expanded={mobileMenuOpen}
+          aria-expanded={isOpen}
         >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       <AnimatePresence>
-        {mobileMenuOpen && (
+        {isOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute left-0 top-full w-full overflow-hidden border-b border-white/10 bg-midnight-950/95 backdrop-blur-xl md:hidden"
+            className="absolute left-0 top-full z-[9999] w-full overflow-hidden border-b border-white/10 bg-midnight-950/95 backdrop-blur-xl md:hidden"
           >
             <div className="flex flex-col gap-4 p-6">
               {navItems.map((item) => (
@@ -140,10 +167,7 @@ export function Navbar() {
                   key={item.name}
                   href={item.href}
                   className="border-b border-white/5 py-3 text-base font-medium text-slate-300 transition-colors hover:text-aurora-teal"
-                  onClick={() => {
-                    setActiveSection(item.name)
-                    setMobileMenuOpen(false)
-                  }}
+                  onClick={(event) => handleNavClick(event, item)}
                 >
                   {item.name}
                 </a>
