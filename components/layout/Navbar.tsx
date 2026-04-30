@@ -78,12 +78,9 @@ export function Navbar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
-        <a href="#hero" className="group flex items-center" aria-label="Home">
-          <img
-            src="/GJ.png"
-            alt="GJ Logo"
-            className="h-9 w-9 object-contain transition-transform duration-300 group-hover:scale-110"
-          />
+        <a href="#hero" className="group flex items-center font-display text-2xl font-bold tracking-tighter" aria-label="Home">
+          <span className="text-white transition-colors group-hover:text-aurora-teal/90">G</span>
+          <span className="bg-gradient-to-br from-aurora-teal to-aurora-cyan bg-clip-text text-transparent">J</span>
         </a>
 
         <nav className="hidden items-center gap-1 md:flex">
