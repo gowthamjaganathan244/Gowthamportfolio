@@ -7,6 +7,7 @@ export interface Certification {
   level: string;
   description: string;
   date?: string;
+  url?: string;
   important: boolean;
   type: "featured" | "secondary";
 }
@@ -21,6 +22,30 @@ export const certifications: Certification[] = [
     level: "Associate",
     description: "Validates ability to design secure, resilient, high-performing, and cost-optimized architectures on AWS.",
     date: "Earned 2026",
+    important: true,
+    type: "featured"
+  },
+  {
+    id: "aws-developer-associate",
+    name: "AWS Certified Developer – Associate",
+    issuer: "Amazon Web Services",
+    status: "Credential earned",
+    code: "DVA-C02",
+    level: "associate",
+    description: "Validates proficiency in developing, testing, deploying, and debugging AWS cloud applications.",
+    url: "https://aws.amazon.com/certification/certified-developer-associate/",
+    important: true,
+    type: "featured"
+  },
+  {
+    id: "aws-ai-practitioner",
+    name: "AWS Certified AI Practitioner",
+    issuer: "Amazon Web Services",
+    status: "Credential earned",
+    code: "AIF-C01",
+    level: "foundational",
+    description: "Validates foundational knowledge of AI, machine learning, and generative AI concepts on AWS.",
+    url: "https://aws.amazon.com/certification/certified-ai-practitioner/",
     important: true,
     type: "featured"
   },

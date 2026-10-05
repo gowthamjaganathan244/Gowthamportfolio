@@ -66,8 +66,17 @@ export function CertificationsSection() {
                     </span>
                   </div>
 
-                  <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-aurora-teal transition-colors leading-tight">
-                    {cert.name}
+                  <h3 className="font-display text-lg sm:text-xl font-bold text-white mb-2 leading-tight">
+                    {cert.url ? (
+                      <a
+                        href={cert.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="group-hover:text-aurora-teal transition-colors"
+                      >
+                        {cert.name}
+                      </a>
+                    ) : cert.name}
                   </h3>
 
                   <p className="text-xs font-mono text-slate-500 mb-4">
@@ -114,4 +123,3 @@ export function CertificationsSection() {
     </section>
   )
 }
-
