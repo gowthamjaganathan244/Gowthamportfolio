@@ -10,8 +10,8 @@ const basePath =
 const nextConfig = {
   output: "export",
   trailingSlash: true,
-  basePath,
-  assetPrefix: basePath ? `${basePath}/` : "",
+  ...(basePath && { basePath }),
+  ...(basePath && { assetPrefix: `${basePath}/` }),
   images: {
     unoptimized: true,
   },
