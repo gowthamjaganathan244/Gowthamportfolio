@@ -15,7 +15,7 @@ export interface Certification {
 export const certifications: Certification[] = [
   {
     id: "aws-saa",
-    name: "AWS Certified Solutions Architect Associate",
+    name: "AWS Certified Solutions Architect – Associate",
     issuer: "Amazon Web Services",
     status: "Credential earned",
     code: "SAA-C03",

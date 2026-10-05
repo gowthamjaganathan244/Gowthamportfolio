@@ -25,11 +25,27 @@ export function HeroOverlay() {
             className="mb-4 flex justify-center animate-fade-in opacity-0"
             style={{ animationDelay: '0.2s', animationFillMode: 'forwards' }}
           >
-            <span className="flex max-w-full flex-wrap items-center justify-center gap-2 text-center text-[8.5px] font-mono font-bold uppercase leading-4 tracking-[0.12em] text-aurora-teal/80 min-[390px]:text-[9px] sm:text-[10px] sm:tracking-[0.16em] md:text-xs">
+            <div className="flex max-w-full flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-center text-[8.5px] font-mono font-bold uppercase leading-4 tracking-[0.12em] text-aurora-teal/80 min-[390px]:text-[9px] sm:gap-x-4 sm:text-[10px] sm:tracking-[0.16em] md:text-xs">
               <span className="hidden h-px w-5 bg-aurora-teal/50 sm:block" />
-              AWS Certified Solutions Architect Associate
+              <span>AWS Certified Solutions Architect – Associate</span>
+              <a
+                href="https://aws.amazon.com/certification/certified-developer-associate/"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-aurora-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora-teal"
+              >
+                AWS Certified Developer – Associate
+              </a>
+              <a
+                href="https://aws.amazon.com/certification/certified-ai-practitioner/"
+                target="_blank"
+                rel="noreferrer"
+                className="transition-colors hover:text-aurora-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aurora-teal"
+              >
+                AWS Certified AI Practitioner
+              </a>
               <span className="hidden h-px w-5 bg-aurora-teal/50 sm:block" />
-            </span>
+            </div>
           </div>
 
           <div
