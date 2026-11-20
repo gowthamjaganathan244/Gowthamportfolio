@@ -3,7 +3,7 @@ export interface Experience {
   company: string;
   role: string;
   location: string;
-  type: "full-time" | "contract" | "internship" | "part-time" | "Part-Time / Retail Operations";
+  type: "full-time" | "part-time" | "contract" | "internship" | "capstone";
   period: string;
   summary: string;
   highlights: string[];
@@ -15,31 +15,33 @@ export const experience: Experience[] = [
   {
     id: "exp-1",
     company: "Endeavour Group",
-    role: "Team Member, Retail Operations and Data Insights",
+    role: "Team Member",
     location: "Canberra, Australia",
-    type: "Part-Time / Retail Operations",
-    period: "Nov 2023 - Present",
-    summary: "Supporting retail operations, data-informed service continuity, POS issue resolution, and online order workflows in a fast-paced customer environment.",
+    type: "part-time",
+    period: "Nov 2023 – Present",
+    summary:
+      "Part-time retail role alongside study, handling point-of-sale, online orders and delivery partners in a busy store.",
     highlights: [
-      "Resolve POS and order issues across high-volume in-store and online transaction workflows.",
-      "Analyse sales patterns and seasonal demand trends using Tableau dashboards to support daily operations and service continuity.",
-      "Manage Uber Direct and Jimmy Brings delivery workflows with issue resolution and customer support."
+      "Resolve POS and order issues across in-store and online transactions.",
+      "Review sales and seasonal demand trends in Tableau dashboards to support daily store operations.",
+      "Manage Uber Direct and Jimmy Brings delivery orders, including issue resolution with customers."
     ],
-    tools: ["Tableau", "POS Systems", "Online Orders", "Uber Direct", "Jimmy Brings", "Customer Support"],
-    technologies: ["Tableau", "POS Systems", "Online Orders", "Uber Direct", "Jimmy Brings", "Customer Support"]
+    tools: ["Tableau", "POS Systems", "Uber Direct", "Jimmy Brings"],
+    technologies: ["Tableau", "POS Systems", "Uber Direct", "Jimmy Brings"]
   },
   {
     id: "exp-2",
     company: "Bluebird Advisory",
     role: "Capstone Project Developer",
-    period: "Feb 2025 - May 2025",
-    type: "contract",
     location: "Canberra, Australia",
-    summary: "Delivered a Microsoft-integrated desk booking application for internal staff management.",
+    type: "capstone",
+    period: "Feb 2025 – May 2025",
+    summary:
+      "Industry capstone project: built a desk booking app for Bluebird staff, integrated with Microsoft 365.",
     highlights: [
-      "Built a React desk booking application with Microsoft 365 and Azure AD SSO.",
-      "Automated bookings, reporting, and data capture using Power Automate and SharePoint.",
-      "Implemented validation and conflict handling to prevent duplicate bookings."
+      "Built a React desk booking app with Azure AD single sign-on.",
+      "Automated bookings, reporting and data capture with Power Automate and SharePoint.",
+      "Added validation and conflict handling to prevent double bookings."
     ],
     tools: ["React", "Vite", "Azure AD", "Microsoft 365", "Power Automate", "SharePoint", "Git", "Confluence"],
     technologies: ["React", "Vite", "Azure AD", "Microsoft 365", "Power Automate", "SharePoint", "Git", "Confluence"]
@@ -51,11 +53,12 @@ export const experience: Experience[] = [
     location: "Canberra, Australia",
     type: "internship",
     period: "Dec 2024 – Feb 2025",
-    summary: "Streamlined cyber business data collection and capability mapping through CRM automation.",
+    summary:
+      "Automated how the Hub collects and maps the capabilities of local cyber businesses.",
     highlights: [
-      "Designed structured forms and CRM workflows for capability data capture.",
-      "Built taxonomy and reporting dashboards to improve data visibility.",
-      "Standardised field mappings to reduce manual errors."
+      "Designed structured forms and HubSpot workflows to capture capability data.",
+      "Built a capability taxonomy and Power BI dashboards for reporting.",
+      "Standardised field mappings between systems to cut manual data-entry errors."
     ],
     tools: ["Microsoft Forms", "HubSpot CRM", "Drupal", "Power BI", "Power Automate"],
     technologies: ["Microsoft Forms", "HubSpot CRM", "Drupal", "Power BI", "Power Automate"]
@@ -63,15 +66,16 @@ export const experience: Experience[] = [
   {
     id: "exp-4",
     company: "eShipz",
-    role: "Software Engineer Intern",
-    location: "Remote",
-    type: "internship",
-    period: "Dec 2020 - Dec 2021",
-    summary: "Worked on backend microservices, REST APIs, and core platform migrations.",
+    role: "Software Developer",
+    location: "Bengaluru, India",
+    type: "full-time",
+    period: "Dec 2020 – Dec 2021",
+    summary:
+      "Backend development on a shipping platform: Flask services, REST APIs and a Python 3 migration.",
     highlights: [
-      "Built backend services in Python Flask and MongoDB.",
+      "Built and maintained backend services in Python, Flask and MongoDB.",
       "Migrated Python 2 services to Python 3.",
-      "Supported API reliability testing with Locust."
+      "Load-tested APIs with Locust to find reliability issues before release."
     ],
     tools: ["Python", "Flask", "MongoDB", "REST APIs", "Locust"],
     technologies: ["Python", "Flask", "MongoDB", "REST APIs", "Locust"]
@@ -82,11 +86,11 @@ export const experience: Experience[] = [
     role: "Frontend Developer Intern",
     location: "India",
     type: "internship",
-    period: "Feb 2020 - Nov 2020",
-    summary: "Developed responsive websites and interactive UI components.",
+    period: "Feb 2020 – Nov 2020",
+    summary: "Built responsive client websites and UI components.",
     highlights: [
-      "Built responsive websites using HTML, CSS, Bootstrap, and JavaScript.",
-      "Improved usability, accessibility, and frontend performance."
+      "Built responsive websites with HTML, CSS, Bootstrap and JavaScript.",
+      "Fixed layout, accessibility and page-speed issues across devices."
     ],
     tools: ["HTML", "CSS", "Bootstrap", "JavaScript", "Git"],
     technologies: ["HTML", "CSS", "Bootstrap", "JavaScript", "Git"]
@@ -97,11 +101,11 @@ export const experience: Experience[] = [
     role: "iOS Developer Intern",
     location: "India",
     type: "internship",
-    period: "Dec 2018 - Feb 2019",
-    summary: "Designed and built native iOS applications using Swift.",
+    period: "Dec 2018 – Feb 2019",
+    summary: "Built a native iOS newsreader app in Swift.",
     highlights: [
-      "Built a Swift and Xcode iOS newsreader app using REST APIs.",
-      "Tested across iOS versions and improved UI consistency."
+      "Built the app in Swift and Xcode, pulling articles from REST APIs.",
+      "Tested across iOS versions and fixed UI inconsistencies."
     ],
     tools: ["Swift", "Xcode", "REST APIs", "iOS"],
     technologies: ["Swift", "Xcode", "REST APIs", "iOS"]
